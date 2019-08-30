@@ -1,7 +1,7 @@
 #!/bin/sh
 
-pip install -r requirements.txt
+#pip install -r requirements.txt
 
-python preprocess.py
-python evaluate_sample.py
-python visualize.py
+python src/preprocess.py
+python src/evaluate_sample.py
+python src/visualize.py
