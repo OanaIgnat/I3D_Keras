@@ -1,4 +1,4 @@
-#Kinetics-I3D in Keras
+# Kinetics-I3D in Keras
 
 Keras implementation (including pretrained weights) of I3D action detection method reported in the paper [Quo Vadis, Action Recognition? A New Model and the Kinetics Dataset](https://arxiv.org/abs/1705.07750).
 
