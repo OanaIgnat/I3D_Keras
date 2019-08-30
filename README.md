@@ -106,6 +106,7 @@ pip install -r requirements.txt
 - opencv-contrib-python
 
 I'm using Python 3.6, not sure if it works with Python 2.7
+
 If something does not work, please let me know. I'm happy to help. :)
 
 # License
