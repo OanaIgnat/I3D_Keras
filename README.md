@@ -106,8 +106,9 @@ pip install -r requirements.txt
 - opencv-contrib-python
 
 I'm using Python 3.6, not sure if it works with Python 2.7
-
+If something does not work, please let me know.
 
 # License
 - All code in this repository are licensed under the MIT license as specified by the LICENSE file.
 - The i3d (rgb and flow) pretrained weights were ported from the ones released [Deepmind](https://deepmind.com) in this [repository](https://github.com/deepmind/kinetics-i3d) under [Apache-2.0 License](https://github.com/deepmind/kinetics-i3d/blob/master/LICENSE)
+
