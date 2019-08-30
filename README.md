@@ -1,11 +1,11 @@
 # Kinetics-I3D in Keras
 
-Keras implementation (including pretrained weights) of I3D action detection method reported in the paper [Quo Vadis, Action Recognition? A New Model and the Kinetics Dataset](https://arxiv.org/abs/1705.07750).
+Keras implementation (including pretrained weights) of I3D video action detection method reported in the paper [Quo Vadis, Action Recognition? A New Model and the Kinetics Dataset](https://arxiv.org/abs/1705.07750).
 
 Original implementation by the authors can be found in this [repository](https://github.com/deepmind/kinetics-i3d).
-The model architecture is based on [repository] (https://github.com/dlpbc/keras-kinetics-i3d).
+The __model architecture__ is based on [repository] (https://github.com/dlpbc/keras-kinetics-i3d).
 
-The optical flow computation and all the pre-procesing is done by myself, following the indications from the original paper: see details about the [preprocessing techniques](https://github.com/deepmind/kinetics-i3d#sample-data-and-preprocessing).
+The __optical flow__ computation and all the __pre-procesing__ is done by myself, following the indications from the original paper: see details about the [preprocessing techniques](https://github.com/deepmind/kinetics-i3d#sample-data-and-preprocessing).
 
 # Sample Data (for Evaluation)
 Similar to the original implementation, we evaluate the keras models using the RGB sample and Optical Flow sample (processed from video data) provided in the repository of the authors (see the **data/** directory).
