@@ -30,7 +30,7 @@ This script runs all the modules: `video preprocessing`, `model architecture` an
 and installs all the required libraries.
 
 
-## More details
+### More details
 
 With default flags settings, the `evaluate_sample.py` script builds two I3d Inception architecture (2 stream: RGB and Optical Flow), loads their respective pretrained weights and evaluates RGB sample and Optical Flow sample obtained from video data.
 
