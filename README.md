@@ -8,6 +8,14 @@ The __model architecture__ is based on this [repository](https://github.com/dlpb
 
 The __optical flow__ computation and all the __preprocesing__ is done by myself, following the indications from the original paper: see details about the [preprocessing techniques](https://github.com/deepmind/kinetics-i3d#sample-data-and-preprocessing).
 
+# Data
+
+Under [`data/input_videos`](data/input_videos) there is a input video. After running the preprocessing module you will obtain all the video frames in [`data/frames`](data/frames) (sampled at 25 fps, as specified in the original paper). The results (the preprocessed rgb video and the optical flow video) are saved under [`data/viz_results`](data/viz_results):
+
+
+![Alt Text](data/gifs/cricket_rgb.gif)
+![Alt Text](data/gifs/cricket_flow.gif)
+
 # Usage
 ```
 sh main.sh
@@ -52,6 +60,39 @@ The above usage examples loads weights pretrained on Imagenet and Kinetics datas
 python evaluate_sample.py --eval-type rgb --no-imagenet-pretrained
 ```
 
+# Results
+
+The script outputs the __norm of the logits tensor__, as well as the __top 20 Kinetics classes predicted__ by the model
+with their probability and logit values. Using the default flags, the output should resemble the following up to differences in numerical precision:
+
+```
+Norm of logits: 144.034286
+
+Top 20 classes and probabilities
+0.9999996 38.700874 playing cricket
+3.2525813e-07 23.762228 hurling (sport)
+8.824412e-08 22.457716 playing tennis
+4.547956e-09 19.492287 playing squash or racquetball
+4.257603e-09 19.426315 hitting baseball
+2.1000581e-09 18.719574 catching or throwing baseball
+7.671558e-10 17.712543 catching or throwing softball
+3.830608e-10 17.018047 playing badminton
+3.4193437e-10 16.904472 shooting goal (soccer)
+3.0672612e-10 16.795809 dodgeball
+1.6208218e-10 16.157957 playing kickball
+6.809785e-11 15.290799 passing American football (in game)
+3.362223e-11 14.585041 celebrating
+3.0167153e-11 14.476607 shot put
+2.2506778e-11 14.18367 hammer throw
+1.966535e-11 14.048712 tai chi
+1.7816216e-11 13.949963 sword fighting
+1.6389917e-11 13.86652 throwing discus
+1.1673846e-11 13.5272045 kicking field goal
+1.0559041e-11 13.426836 javelin throw
+
+```
+
+
 # Requirements
 
 ```
@@ -65,6 +106,7 @@ pip install -r requirements.txt
 - opencv-contrib-python
 
 I'm using Python 3.6, not sure if it works with Python 2.7
+
 
 # License
 - All code in this repository are licensed under the MIT license as specified by the LICENSE file.
