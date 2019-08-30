@@ -10,10 +10,15 @@ The __optical flow__ computation and all the __preprocesing__ is done by myself,
 
 # Data
 
-Under [`data/input_videos`](data/input_videos) there is a input video. After running the preprocessing module you will obtain all the video frames in [`data/frames`](data/frames) (sampled at 25 fps, as specified in the original paper). The results (the preprocessed rgb video and the optical flow video) are saved under [`data/viz_results`](data/viz_results):
+Under [`data/input_videos`](data/input_videos) there is an input video.
+
+After running the preprocessing module you will obtain all the video frames in [`data/frames`](data/frames) (sampled at 25 fps, as specified in the original paper).
+
+The results (the preprocessed rgb video and the optical flow video) are saved under [`data/viz_results`](data/viz_results):
 
 
 ![Alt Text](data/gifs/cricket_rgb.gif)
+
 ![Alt Text](data/gifs/cricket_flow.gif)
 
 # Usage
@@ -23,13 +28,6 @@ sh main.sh
 
 This script runs all the modules: `video preprocessing`, `model architecture` and `visualization of results`
 and installs all the required libraries.
-```
-python preprocess.py
-
-python evaluate_sample.py
-
-python visualize.py
-```
 
 
 With default flags settings, the `evaluate_sample.py` script builds two I3d Inception architecture (2 stream: RGB and Optical Flow), loads their respective pretrained weights and evaluates RGB sample and Optical Flow sample obtained from video data.

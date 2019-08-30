@@ -1,3 +1,4 @@
 .idea
 data/frames/
 data/viz_results/
+*.npy
