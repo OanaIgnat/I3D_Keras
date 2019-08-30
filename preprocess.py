@@ -1,6 +1,7 @@
 import cv2
 import os
 import numpy as np
+import argparse
 
 SMALLEST_DIM = 256
 IMAGE_CROP_SIZE = 224
@@ -8,12 +9,12 @@ FRAME_RATE = 25
 
 
 # sample frames at 25 frames per second
-def sample_video(video_path, path_output):
+def sample_videos(video_path, path_output):
     for filename in os.listdir(video_path):
         if filename.endswith((".mp4", ".avi")):
             filename = video_path + filename
             os.system("ffmpeg -r {1} -i {0} -q:v 2 {2}/frame_%05d.jpg".format(filename, FRAME_RATE,
-                                                                                                  path_output))
+                                                                              path_output))
         else:
             continue
 
@@ -114,64 +115,6 @@ def run_flow(sorted_list_frames):
     return result
 
 
-#  For the Flow data, we added a third channel of all 0, then added 0.5 to the entire array, so that results are also between 0 and 1
-def show_flow(video_path_npy):
-
-    flow = np.load(video_path_npy)
-    flow = np.squeeze(flow, axis=0)  # remove the batch dimension
-    nb_frames = flow.shape[0]
-
-    flow_extra = np.zeros((nb_frames, IMAGE_CROP_SIZE, IMAGE_CROP_SIZE, 3))
-    flow_extra[:, :, :, :-1] = flow
-    flow_extra = (flow_extra + 1) / 2
-
-    width = flow.shape[1]
-    heigth = flow.shape[2]
-    video_name = video_path_npy.split("/")[-1][:-4]
-    fourcc = cv2.VideoWriter_fourcc(*'DIVX')
-    fps = 10
-    video = cv2.VideoWriter("data/" + video_name + ".avi", fourcc, fps, (width, heigth))
-
-    for i in range(0, nb_frames):
-        flow_extra_1st_img = flow_extra[i, :, :, :]
-        # confirm the normalization
-        # print('flow Min: %.3f, Max: %.3f' % (flow_extra_1st_img.min(), flow_extra_1st_img.max()))
-
-        flow_extra_1st_img *= 255.0 / flow_extra_1st_img.max()
-        flow_extra_1st_img = np.uint8(flow_extra_1st_img)
-        video.write(flow_extra_1st_img)
-
-        # cv2.imshow('img_flow', flow_extra_1st_img)
-        # cv2.waitKey(0)
-    cv2.destroyAllWindows()
-    video.release()
-
-
-# From the RGB data, we added 1 and then divided by 2 to rescale between 0 and 1
-def show_rgb(video_path_npy):
-    rgb = np.load(video_path_npy)
-    rgb = (rgb + 1) / 2
-    rgb = np.squeeze(rgb, axis=0)  # remove the batch dimension
-    nb_frames = rgb.shape[0]
-    width = rgb.shape[1]
-    heigth = rgb.shape[2]
-
-    video_name = video_path_npy.split("/")[-1][:-4]
-    fourcc = cv2.VideoWriter_fourcc(*'DIVX')
-    fps = 10
-    video = cv2.VideoWriter("data/" + video_name + ".avi", fourcc, fps, (width, heigth))
-
-    for i in range(0, nb_frames):
-        rgb_1st_img = rgb[i, :, :, :]
-        # confirm the normalization
-        # print('rgb Min: %.3f, Max: %.3f' % (rgb.min(), rgb.max()))
-        rgb_1st_img *= 255.0 / rgb_1st_img.max()
-        rgb_1st_img = np.uint8(rgb_1st_img)
-        video.write(rgb_1st_img)
-
-    cv2.destroyAllWindows()
-    video.release()
-
 def pre_process_flow(flow_frame):
     resized = resize(flow_frame)
     img_cropped = crop_center(resized, (IMAGE_CROP_SIZE, IMAGE_CROP_SIZE))
@@ -188,19 +131,32 @@ def compute_optical_flow(prev, curr):
     return flow_frame
 
 
-if __name__ == "__main__":
-    path_output = "data/frames/"
-    video_path = "data/"
-    if not os.path.exists(path_output):
-        os.makedirs(path_output)
-        sample_video(video_path, path_output)
-    # path_output = "/local/oignat/Action_Recog/vlog_action_recognition/data/Video/YOLO/miniclips_results/1p0_1mini_1/frames/"
+def main(args):
+    if not os.path.exists(args.path_output):
+        os.makedirs(args.path_output)
 
-    sorted_list_frames = read_frames(path_output)
-    # result = run_rgb(sorted_list_frames)
-    # np.save('data/cricket_rgb.npy', result)
-    # show_rgb('data/cricket_rgb.npy')
+    # sample all video from video_path at specified frame rate (FRAME_RATE param)
+    sample_videos(args.video_path, args.path_output)
+
+    # make sure the frames are processed in order
+    sorted_list_frames = read_frames(args.path_output)
+
+    result = run_rgb(sorted_list_frames)
+    npy_rgb_output = 'data/' + args.video_name + '_rgb.npy'
+    np.save(npy_rgb_output, result)
 
     flow = run_flow(sorted_list_frames)
-    np.save('data/cricket_flow.npy', flow)
-    show_flow('data/cricket_flow.npy')
+    npy_flow_output = 'data/' + args.video_name + '_flow.npy'
+    np.save(npy_flow_output, flow)
+
+
+if __name__ == "__main__":
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--video_name', type=str, default="cricket")
+    parser.add_argument('--path_output', type=str, default="data/frames/")
+    parser.add_argument('--video_path', type=str, default="data/input_videos/")
+
+    args = parser.parse_args()
+
+    main(args)

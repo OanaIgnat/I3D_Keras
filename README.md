@@ -1,55 +1,70 @@
 # Kinetics-I3D in Keras
 
-Keras implementation (including pretrained weights) of I3D video action detection method reported in the paper [Quo Vadis, Action Recognition? A New Model and the Kinetics Dataset](https://arxiv.org/abs/1705.07750).
+Keras implementation of I3D video action detection method reported in the paper [Quo Vadis, Action Recognition? A New Model and the Kinetics Dataset](https://arxiv.org/abs/1705.07750).
 
 Original implementation by the authors can be found in this [repository](https://github.com/deepmind/kinetics-i3d), together with details about the pre-processing techniques.
 
-The __model architecture__ is based on [repository](https://github.com/dlpbc/keras-kinetics-i3d).
+The __model architecture__ is based on this [repository](https://github.com/dlpbc/keras-kinetics-i3d).
 
-The __optical flow__ computation and all the __pre-procesing__ is done by myself, following the indications from the original paper: see details about the [preprocessing techniques](https://github.com/deepmind/kinetics-i3d#sample-data-and-preprocessing).
+The __optical flow__ computation and all the __preprocesing__ is done by myself, following the indications from the original paper: see details about the [preprocessing techniques](https://github.com/deepmind/kinetics-i3d#sample-data-and-preprocessing).
 
-<!-- # Usage -->
-<!-- ``` -->
-<!-- python evaluate_sample.py -->
+# Usage
+```
+sh main.sh
+```
 
-<!-- or -->
+This script runs all the modules: `video preprocessing`, `model architecture` and `visualization of results`
+and installs all the required libraries.
+```
+python preprocess.py
 
-<!-- [For help] -->
-<!-- python evaluate_sample.py -h -->
-<!-- ``` -->
+python evaluate_sample.py
 
-<!-- With default flags settings, the `evaluate_sample.py` script builds two I3d Inception architecture (2 stream: RGB and Optical Flow), loads their respective pretrained weights and evaluates RGB sample and Optical Flow sample obtained from video data.   -->
+python visualize.py
+```
 
-<!-- You can set flags to evaluate model using only one I3d Inception architecture (RGB or Optical Flow) as shown below: -->
 
-<!-- ``` -->
-<!-- # For RGB -->
-<!-- python evaluate_sample.py --eval-type rgb -->
+With default flags settings, the `evaluate_sample.py` script builds two I3d Inception architecture (2 stream: RGB and Optical Flow), loads their respective pretrained weights and evaluates RGB sample and Optical Flow sample obtained from video data.
 
-<!-- # For Optical Flow -->
-<!-- python evaluate_sample.py --eval-type flow -->
-<!-- ``` -->
+You can set flags to evaluate model using only one I3d Inception architecture (RGB or Optical Flow) as shown below:
 
-<!-- Addtionally, as described in the paper (and the authors repository), there are two types of pretrained weights for RGB and Optical Flow models respectively. These are; -->
-<!-- - RGB I3d Inception:  -->
-<!--     - Weights Pretrained on Kinetics dataset only -->
-<!--     - Weights pretrained on Imagenet and Kinetics datasets -->
-<!-- - Optical Flow I3d Inception: -->
-<!--     - Weights Pretrained on Kinetics dataset only -->
-<!--     - Weights pretrained on Imagenet and Kinetics datasets -->
+```
+# For RGB
+python evaluate_sample.py --eval-type rgb
 
-<!-- The above usage examples loads weights pretrained on Imagenet and Kinetics datasets. To load weight pretrained on Kinetics dataset only add the flag **--no-imagenet-pretrained** to the above commands. See an example below: -->
+# For Optical Flow
+python evaluate_sample.py --eval-type flow
+```
 
-<!-- ``` -->
+Addtionally, as described in the paper (and the authors repository), there are __two types of pretrained weights__ for RGB and Optical Flow models respectively. These are;
+- RGB I3d Inception:
+    - Weights Pretrained on Kinetics dataset only
+    - Weights pretrained on Imagenet and Kinetics datasets
+- Optical Flow I3d Inception:
+    - Weights Pretrained on Kinetics dataset only
+    - Weights pretrained on Imagenet and Kinetics datasets
 
-<!-- # RGB I3d Inception model pretrained on kinetics dataset only -->
-<!-- python evaluate_sample.py --eval-type rgb --no-imagenet-pretrained -->
-<!-- ``` -->
+The above usage examples loads weights pretrained on Imagenet and Kinetics datasets. To load weight pretrained on Kinetics dataset only add the flag **--no-imagenet-pretrained** to the above commands. See an example below:
 
-<!-- # Requirements -->
-<!-- - Keras -->
-<!-- - Keras Backend: Tensorflow (tested) or Theano (not tested) or CNTK (not tested) -->
-<!-- - h5py -->
+```
+
+# RGB I3d Inception model pretrained on kinetics dataset only
+python evaluate_sample.py --eval-type rgb --no-imagenet-pretrained
+```
+
+# Requirements
+
+```
+pip install -r requirements.txt
+```
+- Keras
+- Keras Backend: Tensorflow (tested) or Theano (not tested) or CNTK (not tested)
+- h5py
+- numpy
+- opencv-python
+- opencv-contrib-python
+
+I'm using Python 3.6, not sure if it works with Python 2.7
 
 # License
 - All code in this repository are licensed under the MIT license as specified by the LICENSE file.

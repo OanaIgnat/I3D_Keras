@@ -16,21 +16,18 @@ NUM_FLOW_CHANNELS = 2
 
 NUM_CLASSES = 400
 
-
-
 LABEL_MAP_PATH = 'data/label_map.txt'
 
-def evaluate(args):
+def main(args):
 
     SAMPLE_DATA_PATH = {
         # 'rgb' : 'data/v_CricketShot_g04_c01_rgb.npy',
-        'rgb': 'data/' + args.video + '_rgb.npy',
-        'flow': 'data/'+ args.video + '_flow.npy'
+        'rgb': 'data/' + args.video_name + '_rgb.npy',
+        'flow': 'data/'+ args.video_name + '_flow.npy'
     }
 
     # load the kinetics classes
     kinetics_classes = [x.strip() for x in open(LABEL_MAP_PATH, 'r')]
-
 
     if args.eval_type in ['rgb', 'joint']:
 
@@ -55,8 +52,6 @@ def evaluate(args):
                 input_shape=(INPUT_SHAPE, FRAME_HEIGHT, FRAME_WIDTH, NUM_RGB_CHANNELS),
                 classes=NUM_CLASSES)
 
-
-        
         # make prediction
         rgb_logits = rgb_model.predict(rgb_sample)
 
@@ -103,7 +98,7 @@ def evaluate(args):
     sorted_indices = np.argsort(sample_predictions)[::-1]
 
     print('\nNorm of logits: %f' % np.linalg.norm(sample_logits))
-    print('\nTop classes and probabilities')
+    print('\nTop 20 classes and probabilities')
     for index in sorted_indices[:20]:
         print(sample_predictions[index], sample_logits[index], kinetics_classes[index])
 
@@ -121,7 +116,7 @@ if __name__ == '__main__':
         help='If set, load model weights trained only on kinetics dataset. Otherwise, load model weights trained on imagenet and kinetics dataset.',
         action='store_true')
 
-    parser.add_argument('--video', type=str)
+    parser.add_argument('--video_name', type=str, default='cricket')
 
     args = parser.parse_args()
-    evaluate(args)
+    main(args)
