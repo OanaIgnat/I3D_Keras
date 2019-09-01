@@ -23,7 +23,7 @@ The results (the preprocessed rgb video and the optical flow video) are saved un
 
 # Usage
 ```
-sh main.sh
+bash main.sh
 ```
 
 This script runs all the modules: `video preprocessing`, `model architecture` and `visualization of results`

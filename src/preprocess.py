@@ -9,14 +9,14 @@ FRAME_RATE = 25
 
 
 # sample frames at 25 frames per second
-def sample_videos(video_path, path_output):
-    for filename in os.listdir(video_path):
-        if filename.endswith((".mp4", ".avi")):
-            filename = video_path + filename
-            os.system("ffmpeg -r {1} -i {0} -q:v 2 {2}/frame_%05d.jpg".format(filename, FRAME_RATE,
-                                                                              path_output))
-        else:
-            continue
+def sample_video(video_path, path_output):
+    # for filename in os.listdir(video_path):
+    if video_path.endswith((".mp4", ".avi")):
+        # filename = video_path + filename
+        os.system("ffmpeg -r {1} -i {0} -q:v 2 {2}/frame_%05d.jpg".format(video_path, FRAME_RATE,
+                                                                          path_output))
+    else:
+        raise ValueError("Video path is not the name of video file (.mp4 or .avi)")
 
 
 # the videos are resized preserving aspect ratio so that the smallest dimension is 256 pixels, with bilinear interpolation
@@ -136,26 +136,27 @@ def main(args):
         os.makedirs(args.path_output)
 
     # sample all video from video_path at specified frame rate (FRAME_RATE param)
-    sample_videos(args.video_path, args.path_output)
+    sample_video(args.video_path, args.path_output)
 
     # make sure the frames are processed in order
     sorted_list_frames = read_frames(args.path_output)
 
-    result = run_rgb(sorted_list_frames)
-    npy_rgb_output = 'data/' + args.video_name + '_rgb.npy'
-    np.save(npy_rgb_output, result)
+    video_name = args.video_path.split("/")[-1][:-4]
+
+    rgb = run_rgb(sorted_list_frames)
+    npy_rgb_output = 'data/' + video_name + '_rgb.npy'
+    np.save(npy_rgb_output, rgb)
 
     flow = run_flow(sorted_list_frames)
-    npy_flow_output = 'data/' + args.video_name + '_flow.npy'
+    npy_flow_output = 'data/' + video_name + '_flow.npy'
     np.save(npy_flow_output, flow)
 
 
 if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('--video_name', type=str, default="cricket")
     parser.add_argument('--path_output', type=str, default="data/frames/")
-    parser.add_argument('--video_path', type=str, default="data/input_videos/")
+    parser.add_argument('--video_path', type=str, default="data/input_videos/cricket.avi")
 
     args = parser.parse_args()
 
