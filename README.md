@@ -22,7 +22,8 @@ The results (the preprocessed rgb video and the optical flow video) are saved un
 ![Alt Text](data/gifs/cricket_flow.gif)
 
 # Usage
-```
+
+```bash
 bash main.sh
 ```
 
@@ -36,7 +37,7 @@ With default flags settings, the `evaluate_sample.py` script builds two I3d Ince
 
 You can set flags to evaluate model using only one I3d Inception architecture (RGB or Optical Flow) as shown below:
 
-```
+```bash
 # For RGB
 python evaluate_sample.py --eval-type rgb
 
@@ -54,8 +55,7 @@ Addtionally, as described in the paper (and the authors repository), there are _
 
 The above usage examples loads weights pretrained on Imagenet and Kinetics datasets. To load weight pretrained on Kinetics dataset only add the flag **--no-imagenet-pretrained** to the above commands. See an example below:
 
-```
-
+```bash
 # RGB I3d Inception model pretrained on kinetics dataset only
 python evaluate_sample.py --eval-type rgb --no-imagenet-pretrained
 ```
@@ -89,15 +89,16 @@ Top 20 classes and probabilities
 1.6389917e-11 13.86652 throwing discus
 1.1673846e-11 13.5272045 kicking field goal
 1.0559041e-11 13.426836 javelin throw
-
 ```
-
 
 # Requirements
 
-```
+Install CUDA 10.0 and (cuDNN?).
+
+```bash
 pip install -r requirements.txt
 ```
+
 - Keras
 - Keras Backend: Tensorflow (tested) or Theano (not tested) or CNTK (not tested)
 - h5py

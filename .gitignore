@@ -1,4 +1,6 @@
 .idea
 data/frames/
 data/viz_results/
+data/input_videos/
+data/results
 *.npy

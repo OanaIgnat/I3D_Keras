@@ -2,9 +2,11 @@
 Loads pretrained model of I3d Inception architecture for the paper: 'https://arxiv.org/abs/1705.07750'
 Evaluates a RGB and Flow sample similar to the paper's github repo: 'https://github.com/deepmind/kinetics-i3d'
 '''
+import os
 
 import numpy as np
 import argparse
+from preprocess import IMAGE_CROP_SIZE, ROOT_PATH, remove_options
 
 from i3d_inception import Inception_Inflated3d
 
@@ -22,8 +24,8 @@ def main(args):
 
     SAMPLE_DATA_PATH = {
         # 'rgb' : 'data/v_CricketShot_g04_c01_rgb.npy',
-        'rgb': 'data/' + args.video_name + '_rgb.npy',
-        'flow': 'data/'+ args.video_name + '_flow.npy'
+        'rgb': 'data/results/' + args.video_name,
+        'flow': 'data/results/'+ args.video_name
     }
 
     # load the kinetics classes
@@ -96,7 +98,7 @@ def main(args):
     sample_predictions = np.exp(sample_logits) / np.sum(np.exp(sample_logits))
 
     sorted_indices = np.argsort(sample_predictions)[::-1]
-
+    print("\nFor video " + args.video_name + ": ")
     print('\nNorm of logits: %f' % np.linalg.norm(sample_logits))
     print('\nTop 20 classes and probabilities')
     for index in sorted_indices[:20]:
@@ -106,17 +108,26 @@ def main(args):
 
 
 if __name__ == '__main__':
-    # parse arguments
     parser = argparse.ArgumentParser()
-    parser.add_argument('--eval-type',
-        help='specify model type. 1 stream (rgb or flow) or 2 stream (joint = rgb and flow).',
-        type=str, choices=['rgb', 'flow', 'joint'], default='joint')
 
-    parser.add_argument('--no-imagenet-pretrained',
-        help='If set, load model weights trained only on kinetics dataset. Otherwise, load model weights trained on imagenet and kinetics dataset.',
-        action='store_true')
+    video_path = ROOT_PATH + "data/results/"
+    for filename in os.listdir(video_path):
+        if filename.endswith((".npy")):
+            video_name = filename
+            # parse arguments
+            parser.add_argument('--eval-type',
+                                help='specify model type. 1 stream (rgb or flow) or 2 stream (joint = rgb and flow).',
+                                type=str, choices=['rgb', 'flow', 'joint'], default='joint')
 
-    parser.add_argument('--video_name', type=str, default='cricket')
+            parser.add_argument('--no-imagenet-pretrained',
+                                help='If set, load model weights trained only on kinetics dataset. Otherwise, load model weights trained on imagenet and kinetics dataset.',
+                                action='store_true')
 
-    args = parser.parse_args()
-    main(args)
+            parser.add_argument('--video_name', type=str, default=video_name)
+
+            args = parser.parse_args()
+            main(args)
+
+            remove_options(parser, ['--path_output', '--video_path'])
+
+

@@ -1,12 +1,21 @@
+import time
+
 import cv2
 import os
 import numpy as np
+from tqdm import tqdm
+import tensorflow as tf
 import argparse
+
 
 SMALLEST_DIM = 256
 IMAGE_CROP_SIZE = 224
 FRAME_RATE = 25
 
+if tf.test.is_gpu_available(cuda_only=True):
+    ROOT_PATH = "/home/oignat/i3d_keras/"
+else:
+    ROOT_PATH = "/local/oignat/Action_Recog/keras-kinetics-i3d/"
 
 # sample frames at 25 frames per second
 def sample_video(video_path, path_output):
@@ -67,7 +76,8 @@ def rescale_pixel_values(img):
 # The provided .npy file thus has shape (1, num_frames, 224, 224, 3) for RGB, corresponding to a batch size of 1
 def run_rgb(sorted_list_frames):
     result = np.zeros((1, IMAGE_CROP_SIZE, IMAGE_CROP_SIZE, 3))
-    for full_file_path in sorted_list_frames:
+    print("Running preprocessing rgb ...")
+    for full_file_path in tqdm(sorted_list_frames):
         img = cv2.imread(full_file_path, cv2.IMREAD_UNCHANGED)
         img = pre_process_rgb(img)
         new_img = np.reshape(img, (1, IMAGE_CROP_SIZE, IMAGE_CROP_SIZE, 3))
@@ -97,14 +107,19 @@ def read_frames(video_path):
 
 def run_flow(sorted_list_frames):
     sorted_list_img = []
-    for frame in sorted_list_frames:
+    print("Running preprocessing flow: 1. rgb2gray ...")
+    for frame in tqdm(sorted_list_frames):
         img = cv2.imread(frame, cv2.IMREAD_UNCHANGED)
         img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         sorted_list_img.append(img_gray)
 
     result = np.zeros((1, IMAGE_CROP_SIZE, IMAGE_CROP_SIZE, 2))
     prev = sorted_list_img[0]
-    for curr in sorted_list_img[1:]:
+    prev = resize(prev)
+
+    print("Running preprocessing flow: 2. optical flow comp. ...")
+    for curr in tqdm(sorted_list_img[1:]):
+        curr = resize(curr)
         flow = compute_optical_flow(prev, curr)
         flow = pre_process_flow(flow)
         prev = curr
@@ -116,10 +131,11 @@ def run_flow(sorted_list_frames):
 
 
 def pre_process_flow(flow_frame):
-    resized = resize(flow_frame)
-    img_cropped = crop_center(resized, (IMAGE_CROP_SIZE, IMAGE_CROP_SIZE))
+    # resized = resize(flow_frame)
+    img_cropped = crop_center(flow_frame, (IMAGE_CROP_SIZE, IMAGE_CROP_SIZE))
     new_img = np.reshape(img_cropped, (1, IMAGE_CROP_SIZE, IMAGE_CROP_SIZE, 2))
     return new_img
+
 
 
 #  Pixel values are truncated to the range [-20, 20], then rescaled between -1 and 1
@@ -140,24 +156,42 @@ def main(args):
 
     # make sure the frames are processed in order
     sorted_list_frames = read_frames(args.path_output)
-
     video_name = args.video_path.split("/")[-1][:-4]
 
     rgb = run_rgb(sorted_list_frames)
-    npy_rgb_output = 'data/' + video_name + '_rgb.npy'
+    npy_rgb_output = ROOT_PATH + 'data/results/' + video_name + '_rgb.npy'
     np.save(npy_rgb_output, rgb)
 
     flow = run_flow(sorted_list_frames)
-    npy_flow_output = 'data/' + video_name + '_flow.npy'
+    npy_flow_output = ROOT_PATH + 'data/results/' + video_name + '_flow.npy'
     np.save(npy_flow_output, flow)
 
 
+def remove_options(parser, options):
+    for option in options:
+        for action in parser._actions:
+            if vars(action)['option_strings'][0] == option:
+                parser._handle_conflict_resolve(None,[(option,action)])
+                break
+
 if __name__ == "__main__":
-
     parser = argparse.ArgumentParser()
-    parser.add_argument('--path_output', type=str, default="data/frames/")
-    parser.add_argument('--video_path', type=str, default="data/input_videos/cricket.avi")
 
-    args = parser.parse_args()
 
-    main(args)
+    # parser.add_argument('--path_output', type=str, default=root_path + "data/frames/1p0_1mini_1/")
+
+    # parser.add_argument('--video_path', type=str,
+    #                     default="../large_data/miniclips_lifestyle_vlogs/miniclips_dataset_new/1p0_1mini_1.mp4")
+
+    video_path = ROOT_PATH + "data/input_videos/"
+    for filename in os.listdir(video_path):
+        if filename.endswith((".mp4", ".avi")):
+            parser.add_argument('--path_output', type=str, default=ROOT_PATH + "data/frames/" + filename[:-4] + "/", help=argparse.SUPPRESS)
+
+            parser.add_argument('--video_path', type=str, default=ROOT_PATH + "data/input_videos/" + filename, help=argparse.SUPPRESS)
+
+            args = parser.parse_args()
+
+            main(args)
+
+            remove_options(parser, ['--path_output', '--video_path'])

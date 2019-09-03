@@ -3,8 +3,8 @@ import argparse
 import cv2
 import os
 import numpy as np
-from preprocess import IMAGE_CROP_SIZE
-
+import tensorflow as tf
+from preprocess import IMAGE_CROP_SIZE, ROOT_PATH
 
 #  For the Flow data, we added a third channel of all 0, then added 0.5 to the entire array, so that results are also between 0 and 1
 def show_flow(video_path_npy):
@@ -87,27 +87,34 @@ def save_flow_video(video_path_npy, path_output):
     cv2.destroyAllWindows()
     video.release()
 
+
 def main(args):
     # files created in preprocess.py
-    npy_rgb_output = 'data/' + args.video_name + '_rgb.npy'
-    npy_flow_output = 'data/' + args.video_name + '_flow.npy'
+    npy_rgb_output = args.video_name + '_rgb.npy'
+    npy_flow_output = args.video_name + '_flow.npy'
 
     if not os.path.exists(args.path_output_video):
         os.makedirs(args.path_output_video)
 
-    show_rgb(npy_rgb_output)
-    save_rgb_video(npy_rgb_output, args.path_output_video)
+    #show_rgb(npy_rgb_output)
+    #save_rgb_video(npy_rgb_output, args.path_output_video)
 
-    show_flow(npy_flow_output)
+    #show_flow(npy_flow_output)
     save_flow_video(npy_flow_output, args.path_output_video)
+
 
 if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('--video_name', type=str, default="cricket")
-    parser.add_argument('--path_output_video', type=str, default='data/viz_results/')
+
+    if tf.test.is_gpu_available(cuda_only=True):
+        root_path = "/home/oignat/i3d_keras/"
+    else:
+        root_path = "/local/oignat/Action_Recog/keras-kinetics-i3d/"
+
+
+    parser.add_argument('--video_name', type=str, default=root_path + "data/results/cricket")
+    parser.add_argument('--path_output_video', type=str, default=root_path + 'data/viz_results/')
     args = parser.parse_args()
 
     main(args)
-
-
