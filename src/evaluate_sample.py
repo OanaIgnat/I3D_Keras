@@ -132,6 +132,6 @@ if __name__ == '__main__':
         args = parser.parse_args()
         main(args)
 
-        remove_options(parser, ['video_name'])
+        remove_options(parser, ['--video_name'])
 
 
