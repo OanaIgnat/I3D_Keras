@@ -152,15 +152,15 @@ def main(args):
         os.makedirs(args.path_output)
 
     # sample all video from video_path at specified frame rate (FRAME_RATE param)
-    sample_video(args.video_path, args.path_output)
+    #sample_video(args.video_path, args.path_output)
 
     # make sure the frames are processed in order
     sorted_list_frames = read_frames(args.path_output)
     video_name = args.video_path.split("/")[-1][:-4]
 
-    rgb = run_rgb(sorted_list_frames)
-    npy_rgb_output = ROOT_PATH + 'data/results/' + video_name + '_rgb.npy'
-    np.save(npy_rgb_output, rgb)
+    # rgb = run_rgb(sorted_list_frames)
+    # npy_rgb_output = ROOT_PATH + 'data/results/' + video_name + '_rgb.npy'
+    # np.save(npy_rgb_output, rgb)
 
     flow = run_flow(sorted_list_frames)
     npy_flow_output = ROOT_PATH + 'data/results/' + video_name + '_flow.npy'
