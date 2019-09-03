@@ -4,4 +4,4 @@
 
 python src/preprocess.py
 python src/evaluate_sample.py
-python src/visualize.py
+#python src/visualize.py

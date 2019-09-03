@@ -1,0 +1,233 @@
+Downloading data from https://github.com/dlpbc/keras-kinetics-i3d/releases/download/v0.2/flow_inception_i3d_imagenet_and_kinetics_tf_dim_ordering_tf_kernels.h5
+
+    8192/51153776 [..............................] - ETA: 0s
+   57344/51153776 [..............................] - ETA: 45s
+  303104/51153776 [..............................] - ETA: 17s
+ 1171456/51153776 [..............................] - ETA: 6s 
+ 2752512/51153776 [>.............................] - ETA: 3s
+ 5767168/51153776 [==>...........................] - ETA: 2s
+ 9355264/51153776 [====>.........................] - ETA: 1s
+11894784/51153776 [=====>........................] - ETA: 1s
+14499840/51153776 [=======>......................] - ETA: 1s
+17170432/51153776 [=========>....................] - ETA: 0s
+19939328/51153776 [==========>...................] - ETA: 0s
+22708224/51153776 [============>.................] - ETA: 0s
+25493504/51153776 [=============>................] - ETA: 0s
+28278784/51153776 [===============>..............] - ETA: 0s
+31080448/51153776 [=================>............] - ETA: 0s
+33824768/51153776 [==================>...........] - ETA: 0s
+36421632/51153776 [====================>.........] - ETA: 0s
+39092224/51153776 [=====================>........] - ETA: 0s
+41910272/51153776 [=======================>......] - ETA: 0s
+44744704/51153776 [=========================>....] - ETA: 0s
+47579136/51153776 [==========================>...] - ETA: 0s
+50249728/51153776 [============================>.] - ETA: 0s
+51159040/51153776 [==============================] - 1s 0us/step
+
+For video 1p0_1clip_2: 
+
+Norm of logits: 76.372208
+
+Top 20 classes and probabilities
+0.7479501 15.875444 playing piano
+0.17843698 14.442344 playing keyboard
+0.045143265 13.067949 playing organ
+0.013130688 11.83306 using computer
+0.0050536245 10.878214 playing poker
+0.0039489935 10.631569 recording music
+0.003775861 10.586737 texting
+0.0003927673 8.32357 using remote controller (not gaming)
+0.00025316747 7.884404 driving car
+0.00018407087 7.565674 bookbinding
+0.0001607002 7.4298935 playing cello
+0.00013100199 7.2255654 playing cards
+0.00011827569 7.123371 folding paper
+0.00011727297 7.114857 writing
+9.357537e-05 6.88912 unboxing
+8.73277e-05 6.8200207 counting money
+6.4083266e-05 6.510536 wrapping present
+5.1995194e-05 6.301504 playing guitar
+4.9344646e-05 6.249182 playing violin
+4.1243486e-05 6.069846 drumming fingers
+
+For video 1p0_1clip_3: 
+
+Norm of logits: 60.523552
+
+Top 20 classes and probabilities
+0.8764343 11.740034 washing hands
+0.018340454 7.8732815 doing nails
+0.017524183 7.827754 cleaning toilet
+0.010307093 7.2970047 cleaning floor
+0.010212386 7.2877736 cleaning shoes
+0.007476292 6.975909 applying cream
+0.006263811 6.798961 shredding paper
+0.003985086 6.346731 dying hair
+0.0035957678 6.24393 mopping floor
+0.0034341142 6.1979313 folding paper
+0.0027334779 5.969747 unboxing
+0.0027231392 5.9659576 sharpening pencil
+0.002060092 5.686923 using remote controller (not gaming)
+0.0017359664 5.5157366 washing dishes
+0.0015341518 5.39215 making tea
+0.0014332975 5.32415 massaging feet
+0.001333292 5.2518234 making jewelry
+0.0012102056 5.1549625 drinking
+0.0011562299 5.109337 opening bottle
+0.001149254 5.1032853 baking cookies
+
+For video 1p0_1clip_7: 
+
+Norm of logits: 83.937401
+
+Top 20 classes and probabilities
+0.4891818 14.65432 ironing
+0.34111595 14.293808 washing dishes
+0.07120747 12.727183 folding clothes
+0.03341609 11.970623 spray painting
+0.01468788 11.148608 setting table
+0.009049562 10.664302 washing hands
+0.008518619 10.60384 cleaning shoes
+0.007127939 10.425608 cleaning windows
+0.004888325 10.048435 changing oil
+0.0036314235 9.75121 folding napkins
+0.003069995 9.5832615 cleaning floor
+0.0027177283 9.461382 doing laundry
+0.002293267 9.291563 garbage collecting
+0.0021615734 9.232422 bartending
+0.0007977429 8.235617 running on treadmill
+0.0005592271 7.880386 shining shoes
+0.00055541017 7.873537 shuffling cards
+0.00049747725 7.76338 recording music
+0.00044290617 7.647188 pushing wheelchair
+0.00041188914 7.5745845 assembling computer
+
+For video 1p0_1clip_6: 
+
+Norm of logits: 94.889153
+
+Top 20 classes and probabilities
+0.729522 18.408844 washing dishes
+0.2520723 17.34617 washing hands
+0.00431366 13.278241 spraying
+0.0037152504 13.128901 ironing
+0.0030573525 12.934004 cleaning windows
+0.0016139597 12.295145 cleaning shoes
+0.0015314962 12.2427 spray painting
+0.0009310945 11.74506 cleaning toilet
+0.00051622157 11.155235 pumping gas
+0.00040715744 10.917899 setting table
+0.00038881667 10.871807 building cabinet
+0.00038051236 10.850218 bending metal
+0.00032693532 10.698462 grooming dog
+0.00025873617 10.464508 cooking egg
+0.00015347266 9.942222 making bed
+0.0001272844 9.755123 making tea
+8.831864e-05 9.38965 making pizza
+8.5218046e-05 9.353912 cleaning floor
+7.6121054e-05 9.241024 scrambling eggs
+6.285203e-05 9.049482 changing oil
+
+For video 1p0_1clip_1: 
+
+Norm of logits: 66.015633
+
+Top 20 classes and probabilities
+0.11728766 7.6670218 cleaning toilet
+0.09220046 7.4263573 grooming dog
+0.08482789 7.3430166 doing laundry
+0.06671482 7.1028194 making bed
+0.05525044 6.9142685 wrapping present
+0.04065515 6.6075177 getting a tattoo
+0.036871653 6.5098352 folding clothes
+0.033091784 6.401677 drinking
+0.029173777 6.2756624 cleaning windows
+0.024600461 6.1051574 crying
+0.022349812 6.00921 making snowman
+0.019735428 5.8848076 ironing
+0.01898343 5.8459587 washing feet
+0.018353507 5.812213 laughing
+0.017251328 5.7502813 texting
+0.016530978 5.7076283 ripping paper
+0.01623605 5.689626 hugging
+0.016134262 5.683337 reading book
+0.015637139 5.652041 spray painting
+0.011461216 5.341361 washing hands
+
+For video 1p0_1clip_4: 
+
+Norm of logits: 47.585579
+
+Top 20 classes and probabilities
+0.2703683 7.3154755 welding
+0.15084341 6.7319326 blowing out candles
+0.06370781 5.8699975 smoking
+0.025614977 4.9588675 headbanging
+0.024084968 4.8972783 beatboxing
+0.023419926 4.8692775 air drumming
+0.022430656 4.826119 washing hands
+0.021571424 4.78706 opening bottle
+0.018639408 4.6409683 robot dancing
+0.015179252 4.43562 jumpstyle dancing
+0.011400911 4.1493835 rock scissors paper
+0.0098462915 4.002785 using remote controller (not gaming)
+0.009696385 3.9874434 cleaning floor
+0.00964587 3.9822202 finger snapping
+0.009624928 3.9800467 hoverboarding
+0.009479946 3.964869 punching bag
+0.009318704 3.9477139 playing paintball
+0.00926522 3.941958 headbutting
+0.008779363 3.8880942 doing nails
+0.008172802 3.816502 folding napkins
+
+For video 1p0_1clip_2: 
+
+Norm of logits: 76.372208
+
+Top 20 classes and probabilities
+0.7479501 15.875444 playing piano
+0.17843698 14.442344 playing keyboard
+0.045143265 13.067949 playing organ
+0.013130688 11.83306 using computer
+0.0050536245 10.878214 playing poker
+0.0039489935 10.631569 recording music
+0.003775861 10.586737 texting
+0.0003927673 8.32357 using remote controller (not gaming)
+0.00025316747 7.884404 driving car
+0.00018407087 7.565674 bookbinding
+0.0001607002 7.4298935 playing cello
+0.00013100199 7.2255654 playing cards
+0.00011827569 7.123371 folding paper
+0.00011727297 7.114857 writing
+9.357537e-05 6.88912 unboxing
+8.73277e-05 6.8200207 counting money
+6.4083266e-05 6.510536 wrapping present
+5.1995194e-05 6.301504 playing guitar
+4.9344646e-05 6.249182 playing violin
+4.1243486e-05 6.069846 drumming fingers
+
+For video 1p0_1clip_5: 
+
+Norm of logits: 75.398758
+
+Top 20 classes and probabilities
+0.43516275 9.719262 cleaning windows
+0.13490693 8.548127 washing dishes
+0.066495635 7.840678 pumping gas
+0.05302381 7.614283 flipping pancake
+0.030121708 7.048788 robot dancing
+0.026546516 6.9224405 pumping fist
+0.013289358 6.2305055 tossing coin
+0.012999442 6.2084484 washing hands
+0.011707651 6.1037846 setting table
+0.011109748 6.051365 air drumming
+0.00902356 5.843381 playing piano
+0.008762431 5.8140154 giving or receiving award
+0.0076894965 5.6833973 doing laundry
+0.0076619214 5.679805 bartending
+0.0075954483 5.671091 sign language interpreting
+0.006229241 5.4727964 sniffing
+0.0061038965 5.4524693 texting
+0.0058557997 5.4109745 slapping
+0.005818286 5.4045477 barbequing
+0.005156749 5.2838483 using computer
