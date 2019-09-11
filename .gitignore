@@ -2,5 +2,6 @@
 data/frames/
 data/viz_results/
 data/input_videos/
+data/input_videos2/
 data/results
 *.npy
