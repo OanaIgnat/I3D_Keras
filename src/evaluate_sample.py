@@ -109,13 +109,6 @@ def main(args):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    set_video_names = set()
-    video_path = ROOT_PATH + "data/results/"
-    for filename in os.listdir(video_path):
-        if filename.endswith((".npy")):
-            video_name = "_".join(filename.split("_")[:-1])
-            set_video_names.add(video_name)
-
 
     # parse arguments
     parser.add_argument('--eval-type',
@@ -126,12 +119,21 @@ if __name__ == '__main__':
                         help='If set, load model weights trained only on kinetics dataset. Otherwise, load model weights trained on imagenet and kinetics dataset.',
                         action='store_true')
 
-    for video_name in list(set_video_names):
-        parser.add_argument('--video_name', type=str, default=video_name)
+    # set_video_names = set()
+    # video_path = ROOT_PATH + "data/results/"
+    # for filename in os.listdir(video_path):
+    #     if filename.endswith((".npy")):
+    #         video_name = "_".join(filename.split("_")[:-1])
+    #         set_video_names.add(video_name)
+    # for video_name in list(set_video_names):
+    #     parser.add_argument('--video_name', type=str, default=video_name)
+    #
+    #     args = parser.parse_args()
+    #     main(args)
+    #
+    #     remove_options(parser, ['--video_name'])
 
-        args = parser.parse_args()
-        main(args)
+    parser.add_argument('--video_name', type=str, default="2Y8XQ")
 
-        remove_options(parser, ['--video_name'])
-
-
+    args = parser.parse_args()
+    main(args)

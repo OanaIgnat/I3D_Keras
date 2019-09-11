@@ -231,3 +231,1097 @@ Top 20 classes and probabilities
 0.0058557997 5.4109745 slapping
 0.005818286 5.4045477 barbequing
 0.005156749 5.2838483 using computer
+
+For video 1p0_1clip_42: 
+
+Norm of logits: 65.787956
+
+Top 20 classes and probabilities
+0.4611934 14.248981 recording music
+0.3097254 13.85085 using computer
+0.20282035 13.4274845 using remote controller (not gaming)
+0.008142624 10.212276 playing controller
+0.004643569 9.650647 texting
+0.00456391 9.633344 drumming fingers
+0.0035429988 9.380137 playing keyboard
+0.0012497591 8.338115 assembling computer
+0.00092589 8.038164 beatboxing
+0.0006364259 7.6632767 playing poker
+0.0003798124 7.147086 news anchoring
+0.00026643617 6.7925434 counting money
+0.00014228025 6.1652074 headbanging
+0.00012197302 6.0112085 playing ukulele
+0.000118759825 5.984512 answering questions
+0.000107269436 5.8827524 unboxing
+9.161198e-05 5.724971 playing bass guitar
+7.745546e-05 5.5571117 playing guitar
+7.0501876e-05 5.463048 sign language interpreting
+6.215933e-05 5.3371096 cleaning windows
+
+For video 1p0_1clip_40: 
+
+Norm of logits: 62.005116
+
+Top 20 classes and probabilities
+0.40290007 10.181901 grooming dog
+0.17270741 9.334811 cleaning toilet
+0.15822078 9.247204 washing hands
+0.069053285 8.418091 doing laundry
+0.030391863 7.5973873 washing dishes
+0.022248546 7.285489 making bed
+0.022197766 7.283204 making snowman
+0.01950998 7.1541386 ironing
+0.010018125 6.4876084 spray painting
+0.009104759 6.3920097 cleaning windows
+0.0064622103 6.049184 getting a tattoo
+0.004540365 5.69622 washing feet
+0.0042907307 5.6396694 setting table
+0.0037803503 5.513029 ice skating
+0.0027178032 5.1830363 folding clothes
+0.0025179957 5.1066756 taking a shower
+0.0022710944 5.003474 shaving legs
+0.0020271842 4.88986 ice fishing
+0.0020218168 4.887209 writing
+0.0019037178 4.827021 snowboarding
+
+For video 1p0_1clip_25: 
+
+Norm of logits: 73.059921
+
+Top 20 classes and probabilities
+0.6676912 14.565316 recording music
+0.18284273 13.270117 using computer
+0.05352434 12.041627 playing controller
+0.045899786 11.887951 using remote controller (not gaming)
+0.029409697 11.442815 playing keyboard
+0.012686693 10.602044 drumming fingers
+0.0018700047 8.687431 smoking
+0.0008806214 7.934363 barbequing
+0.0006224141 7.587341 playing organ
+0.000466775 7.2995825 playing poker
+0.00042387636 7.203177 texting
+0.000339531 6.9813004 beatboxing
+0.00027043285 6.753759 playing guitar
+0.00022022496 6.5483847 welding
+0.00020247792 6.464366 whistling
+0.00019901825 6.4471316 cooking egg
+0.00019153795 6.408821 counting money
+0.00015998095 6.22879 cleaning floor
+0.00012715024 5.9991045 dining
+0.00010515566 5.809177 making pizza
+
+For video 1p0_1clip_39: 
+
+Norm of logits: 56.993965
+
+Top 20 classes and probabilities
+0.1588189 7.652747 making tea
+0.15100735 7.602311 setting table
+0.12037376 7.375584 blowing out candles
+0.06227064 6.7164726 drinking shots
+0.05668563 6.6225033 cleaning floor
+0.048070997 6.4576616 using remote controller (not gaming)
+0.040545307 6.2874026 smoking
+0.02754282 5.9007244 washing hands
+0.027355257 5.8938913 archery
+0.016566703 5.3923774 beatboxing
+0.01629917 5.3760967 opening bottle
+0.016156543 5.3673077 tasting beer
+0.0132315075 5.1675835 smoking hookah
+0.012613961 5.1197867 recording music
+0.012470166 5.1083217 welding
+0.011056741 4.988023 drinking beer
+0.009300628 4.8150644 air drumming
+0.008434908 4.7173615 folding napkins
+0.0075571323 4.6074743 sharpening pencil
+0.0073189326 4.575447 shredding paper
+
+For video 1p0_1clip_16: 
+
+Norm of logits: 78.643486
+
+Top 20 classes and probabilities
+0.5845639 14.401461 massaging back
+0.18616624 13.257235 tickling
+0.09593633 12.594279 massaging legs
+0.07008304 12.280275 massaging feet
+0.013227142 10.612865 crying
+0.0074853254 10.043539 stretching leg
+0.0061862073 9.852917 massaging person's head
+0.0037917108 9.363412 folding clothes
+0.0032623187 9.213033 yoga
+0.0032424335 9.206919 waxing legs
+0.0032254094 9.201654 bandaging
+0.0027201888 9.031296 stretching arm
+0.002573066 8.975693 waxing chest
+0.0020562122 8.75146 petting cat
+0.0020428954 8.744963 exercising with an exercise ball
+0.0018843921 8.6642 laughing
+0.0016755784 8.546753 clapping
+0.0015404901 8.462695 cutting nails
+0.00095075066 7.980091 ironing
+0.0007660581 7.764097 kissing
+
+For video 1p0_1clip_41: 
+
+Norm of logits: 65.275475
+
+Top 20 classes and probabilities
+0.8583353 14.14127 playing piano
+0.11728444 12.150877 playing keyboard
+0.012370299 9.901573 playing organ
+0.0018555315 8.004446 playing cello
+0.0018360348 7.993883 playing poker
+0.0012166958 7.5824137 recording music
+0.00082352373 7.192112 using computer
+0.00045054595 6.5889797 playing flute
+0.00038692905 6.436761 playing violin
+0.00037745773 6.4119782 singing
+0.00036656245 6.3826885 playing clarinet
+0.0003505048 6.337894 tapping guitar
+0.00034507908 6.3222933 playing guitar
+0.0002954037 6.1668625 yoga
+0.00029458982 6.1641035 crying
+0.00022600623 5.899082 texting
+0.00021289926 5.839339 playing harp
+0.00020530821 5.803032 wrapping present
+0.00019511142 5.7520905 playing recorder
+0.00015113321 5.496681 reading book
+
+For video 1p0_1clip_7: 
+
+Norm of logits: 83.937401
+
+Top 20 classes and probabilities
+0.4891818 14.65432 ironing
+0.34111595 14.293808 washing dishes
+0.07120747 12.727183 folding clothes
+0.03341609 11.970623 spray painting
+0.01468788 11.148608 setting table
+0.009049562 10.664302 washing hands
+0.008518619 10.60384 cleaning shoes
+0.007127939 10.425608 cleaning windows
+0.004888325 10.048435 changing oil
+0.0036314235 9.75121 folding napkins
+0.003069995 9.5832615 cleaning floor
+0.0027177283 9.461382 doing laundry
+0.002293267 9.291563 garbage collecting
+0.0021615734 9.232422 bartending
+0.0007977429 8.235617 running on treadmill
+0.0005592271 7.880386 shining shoes
+0.00055541017 7.873537 shuffling cards
+0.00049747725 7.76338 recording music
+0.00044290617 7.647188 pushing wheelchair
+0.00041188914 7.5745845 assembling computer
+
+For video 1p0_1clip_37: 
+
+Norm of logits: 101.127357
+
+Top 20 classes and probabilities
+0.84911865 14.961177 making tea
+0.027726028 11.53935 washing hands
+0.022449601 11.328251 cleaning shoes
+0.011029136 10.617518 sharpening pencil
+0.008447119 10.350803 making a sandwich
+0.0074828546 10.229592 drinking shots
+0.006503567 10.089329 unboxing
+0.006497318 10.088367 baking cookies
+0.0060729617 10.020824 barbequing
+0.005807923 9.976201 doing nails
+0.005358486 9.895659 setting table
+0.004907245 9.807691 cooking egg
+0.004321074 9.680482 peeling potatoes
+0.004087472 9.624905 arranging flowers
+0.0024048951 9.094484 wrapping present
+0.0021716703 8.992475 smoking
+0.002016072 8.918129 applying cream
+0.0017760376 8.791363 opening bottle
+0.0016776295 8.73436 watering plants
+0.0016371567 8.709939 cooking chicken
+
+For video 1p0_1clip_21: 
+
+Norm of logits: 84.309769
+
+Top 20 classes and probabilities
+0.973523 16.258125 reading book
+0.010420211 11.720951 reading newspaper
+0.0025945376 10.330612 playing piano
+0.0023770542 10.243066 playing poker
+0.0014352222 9.7385235 using computer
+0.001389441 9.706105 writing
+0.0008089641 9.165203 situp
+0.0008029167 9.1577 playing keyboard
+0.00051586854 8.715301 cutting nails
+0.0005100331 8.703924 texting
+0.00045853562 8.5974865 smoking
+0.00040485855 8.472986 playing harmonica
+0.00036919359 8.38077 laughing
+0.00032546936 8.254717 arm wrestling
+0.00030348424 8.184778 playing recorder
+0.00028407387 8.118683 recording music
+0.00027185946 8.074734 playing monopoly
+0.00025713816 8.019062 crying
+0.00023630846 7.9345865 playing trumpet
+0.00022804155 7.8989763 playing chess
+
+For video 1p0_1clip_9: 
+
+Norm of logits: 65.697083
+
+Top 20 classes and probabilities
+0.31735632 9.311364 using remote controller (not gaming)
+0.14805794 8.548943 washing hands
+0.07633502 7.886471 taking a shower
+0.07579322 7.879348 cleaning floor
+0.035827253 7.130048 ice fishing
+0.035698537 7.1264486 cleaning shoes
+0.02380974 6.7214336 sharpening pencil
+0.021752182 6.631053 playing cards
+0.020748219 6.5837994 gargling
+0.019605849 6.527167 drinking
+0.016611418 6.361429 unboxing
+0.015341477 6.281899 making jewelry
+0.012269454 6.0584517 brushing teeth
+0.01092731 5.942604 shredding paper
+0.010720101 5.9234595 playing poker
+0.009608249 5.813961 drawing
+0.007168301 5.5210075 cleaning pool
+0.0067655114 5.4631767 cleaning toilet
+0.0067473757 5.4604926 laughing
+0.0063135545 5.3940377 making tea
+
+For video 1p0_1clip_5: 
+
+Norm of logits: 75.398758
+
+Top 20 classes and probabilities
+0.43516275 9.719262 cleaning windows
+0.13490693 8.548127 washing dishes
+0.066495635 7.840678 pumping gas
+0.05302381 7.614283 flipping pancake
+0.030121708 7.048788 robot dancing
+0.026546516 6.9224405 pumping fist
+0.013289358 6.2305055 tossing coin
+0.012999442 6.2084484 washing hands
+0.011707651 6.1037846 setting table
+0.011109748 6.051365 air drumming
+0.00902356 5.843381 playing piano
+0.008762431 5.8140154 giving or receiving award
+0.0076894965 5.6833973 doing laundry
+0.0076619214 5.679805 bartending
+0.0075954483 5.671091 sign language interpreting
+0.006229241 5.4727964 sniffing
+0.0061038965 5.4524693 texting
+0.0058557997 5.4109745 slapping
+0.005818286 5.4045477 barbequing
+0.005156749 5.2838483 using computer
+
+For video 1p0_1clip_22: 
+
+Norm of logits: 74.150223
+
+Top 20 classes and probabilities
+0.2594139 9.807777 washing hands
+0.18346494 9.461376 reading book
+0.1574878 9.308701 ripping paper
+0.06882863 8.480972 reading newspaper
+0.035658713 7.823346 counting money
+0.032837756 7.7409315 blowing nose
+0.02509841 7.472157 flying kite
+0.023655059 7.4129295 archery
+0.016436998 7.0488873 washing dishes
+0.012834622 6.801499 writing
+0.0121609485 6.7475824 applying cream
+0.012025426 6.736376 folding paper
+0.0110943485 6.6557884 brushing teeth
+0.008402136 6.3778386 opening present
+0.007155195 6.217191 smoking
+0.0070073786 6.1963162 playing cymbals
+0.0058382936 6.013791 shredding paper
+0.0056718127 5.9848614 crying
+0.0051732697 5.8928576 playing harmonica
+0.0049626958 5.8513017 stretching leg
+
+For video 1p0_1clip_17: 
+
+Norm of logits: 82.287781
+
+Top 20 classes and probabilities
+0.7287437 14.369018 massaging back
+0.115223415 12.524569 massaging feet
+0.06730672 11.986956 massaging legs
+0.012977787 10.340935 waxing chest
+0.009120561 9.988227 bandaging
+0.008966265 9.971165 massaging person's head
+0.008279969 9.891535 baby waking up
+0.0074630925 9.787665 folding clothes
+0.0063905194 9.632511 crying
+0.0047711204 9.340277 tickling
+0.004558274 9.29464 waxing back
+0.0037543501 9.100611 petting cat
+0.0033541184 8.9878845 making bed
+0.0031358958 8.92061 washing hands
+0.002273678 8.599094 waxing legs
+0.0013000016 8.040061 applying cream
+0.0010940697 7.8676 washing feet
+0.0010889935 7.8629494 folding napkins
+0.00093123806 7.706455 ironing
+0.0008298796 7.591221 tying tie
+
+For video 1p0_1clip_1: 
+
+Norm of logits: 66.015633
+
+Top 20 classes and probabilities
+0.11728766 7.6670218 cleaning toilet
+0.09220046 7.4263573 grooming dog
+0.08482789 7.3430166 doing laundry
+0.06671482 7.1028194 making bed
+0.05525044 6.9142685 wrapping present
+0.04065515 6.6075177 getting a tattoo
+0.036871653 6.5098352 folding clothes
+0.033091784 6.401677 drinking
+0.029173777 6.2756624 cleaning windows
+0.024600461 6.1051574 crying
+0.022349812 6.00921 making snowman
+0.019735428 5.8848076 ironing
+0.01898343 5.8459587 washing feet
+0.018353507 5.812213 laughing
+0.017251328 5.7502813 texting
+0.016530978 5.7076283 ripping paper
+0.01623605 5.689626 hugging
+0.016134262 5.683337 reading book
+0.015637139 5.652041 spray painting
+0.011461216 5.341361 washing hands
+
+For video 1p0_1clip_38: 
+
+Norm of logits: 77.225945
+
+Top 20 classes and probabilities
+0.6894478 13.888092 sharpening pencil
+0.1866297 12.581327 doing nails
+0.055035576 11.360181 drawing
+0.015332257 10.08216 tapping pen
+0.009661454 9.620345 cleaning toilet
+0.007961086 9.426766 welding
+0.0070806216 9.309563 shredding paper
+0.005372826 9.033555 brushing teeth
+0.0044750324 8.850715 archery
+0.0017402818 7.906248 filling eyebrows
+0.0015432901 7.7861176 folding paper
+0.00135894 7.658906 folding napkins
+0.0011408487 7.4839735 smoking
+0.001095991 7.44386 using remote controller (not gaming)
+0.0010364347 7.3879876 answering questions
+0.001009891 7.3620434 cleaning shoes
+0.00096174516 7.313195 washing hands
+0.0008185423 7.151971 opening bottle
+0.0007468509 7.0603113 writing
+0.0006855283 6.9746356 setting table
+
+For video 1p0_1clip_13: 
+
+Norm of logits: 64.754120
+
+Top 20 classes and probabilities
+0.2126536 9.261154 grooming dog
+0.1128514 8.627562 cleaning windows
+0.10922755 8.594923 washing hair
+0.102168635 8.528114 getting a tattoo
+0.078070946 8.259108 dying hair
+0.054739263 7.904071 cleaning toilet
+0.042486772 7.6506824 fixing hair
+0.03395553 7.4265413 shaving head
+0.032620925 7.3864436 doing laundry
+0.025325628 7.1333065 washing hands
+0.02312019 7.042196 laughing
+0.022354627 7.008523 brushing teeth
+0.02082868 6.9378204 taking a shower
+0.013506886 6.504689 getting a haircut
+0.008781281 6.074112 trimming or shaving beard
+0.005390698 5.5861645 massaging back
+0.0050425553 5.5194025 beatboxing
+0.0047829724 5.466552 skydiving
+0.004508919 5.407547 hugging
+0.0042543192 5.3494244 cracking neck
+
+For video 1p0_1clip_24: 
+
+Norm of logits: 81.972542
+
+Top 20 classes and probabilities
+0.66762763 12.461283 smoking
+0.094975516 10.511171 blowing glass
+0.0354901 9.526806 cooking egg
+0.026702378 9.242305 spray painting
+0.023554094 9.116852 making tea
+0.015659735 8.708645 welding
+0.011550542 8.4042845 bending metal
+0.010835786 8.340406 barbequing
+0.009929964 8.253109 sharpening pencil
+0.008042649 8.042311 making sushi
+0.007887722 8.02286 doing nails
+0.0078723915 8.020914 dining
+0.007694591 7.99807 making jewelry
+0.00765725 7.993205 washing hands
+0.007347372 7.9518948 making a sandwich
+0.0054942537 7.661255 air drumming
+0.003743507 7.277575 tossing coin
+0.003629176 7.2465577 sharpening knives
+0.0035358663 7.2205105 cooking sausages
+0.0022378638 6.763074 using remote controller (not gaming)
+
+For video 1p0_1clip_27: 
+
+Norm of logits: 80.652290
+
+Top 20 classes and probabilities
+0.6142752 17.617224 playing piano
+0.34429663 17.038284 playing keyboard
+0.029577442 14.583793 playing organ
+0.006899391 13.128214 using computer
+0.0040778485 12.60235 recording music
+0.00015572725 9.3371315 playing poker
+0.00015260384 9.316871 texting
+6.0674356e-05 8.3945465 playing controller
+4.954203e-05 8.191847 playing violin
+4.7145113e-05 8.142256 drumming fingers
+4.361749e-05 8.064484 playing cello
+3.8769085e-05 7.9466486 using remote controller (not gaming)
+3.227028e-05 7.763172 baking cookies
+3.108109e-05 7.725625 bookbinding
+2.9829878e-05 7.684536 playing accordion
+2.4344245e-05 7.481321 playing clarinet
+1.7149318e-05 7.130984 making sushi
+1.3963501e-05 6.9254723 counting money
+1.28925185e-05 6.8456726 playing recorder
+1.1038666e-05 6.6904297 driving car
+
+For video 1p0_1clip_3: 
+
+Norm of logits: 60.523552
+
+Top 20 classes and probabilities
+0.8764343 11.740034 washing hands
+0.018340454 7.8732815 doing nails
+0.017524183 7.827754 cleaning toilet
+0.010307093 7.2970047 cleaning floor
+0.010212386 7.2877736 cleaning shoes
+0.007476292 6.975909 applying cream
+0.006263811 6.798961 shredding paper
+0.003985086 6.346731 dying hair
+0.0035957678 6.24393 mopping floor
+0.0034341142 6.1979313 folding paper
+0.0027334779 5.969747 unboxing
+0.0027231392 5.9659576 sharpening pencil
+0.002060092 5.686923 using remote controller (not gaming)
+0.0017359664 5.5157366 washing dishes
+0.0015341518 5.39215 making tea
+0.0014332975 5.32415 massaging feet
+0.001333292 5.2518234 making jewelry
+0.0012102056 5.1549625 drinking
+0.0011562299 5.109337 opening bottle
+0.001149254 5.1032853 baking cookies
+
+For video 1p0_1clip_34: 
+
+Norm of logits: 73.756660
+
+Top 20 classes and probabilities
+0.9735795 15.67589 washing hands
+0.006923631 10.729851 applying cream
+0.006134225 10.608794 cleaning toilet
+0.002154507 9.562472 plastering
+0.0017852003 9.374441 washing dishes
+0.0015858441 9.256027 cleaning shoes
+0.00084313226 8.624279 bartending
+0.0008265471 8.604412 washing feet
+0.0006982377 8.435715 waxing legs
+0.0005371944 8.173515 changing oil
+0.00047618715 8.052966 opening bottle
+0.00038836861 7.84911 dying hair
+0.00038555052 7.8418274 shredding paper
+0.00034881962 7.74171 bookbinding
+0.00034307354 7.7251 making tea
+0.00029190409 7.5635805 cleaning windows
+0.00025805566 7.4403305 breading or breadcrumbing
+0.00022233126 7.2913237 doing laundry
+0.00021744169 7.269086 spray painting
+0.00016774124 7.0095778 cleaning floor
+
+For video 1p0_1clip_31: 
+
+Norm of logits: 85.103996
+
+Top 20 classes and probabilities
+0.9996813 22.768486 washing hands
+9.2512906e-05 13.480642 finger snapping
+6.726459e-05 13.161928 shuffling cards
+6.563351e-05 13.137381 shaking hands
+2.5154412e-05 12.178328 unboxing
+2.2796117e-05 12.079885 applying cream
+1.38548185e-05 11.581927 cleaning pool
+7.032693e-06 10.903864 massaging feet
+5.1656857e-06 10.595332 cleaning toilet
+3.7330549e-06 10.270521 taking a shower
+3.4324753e-06 10.186576 washing feet
+2.0595312e-06 9.675773 scuba diving
+1.9533013e-06 9.622815 clapping
+1.177966e-06 9.117084 playing cards
+1.0647062e-06 9.015993 opening bottle
+9.897631e-07 8.943005 sharpening pencil
+8.41441e-07 8.780655 bending metal
+6.870236e-07 8.577908 contact juggling
+6.160566e-07 8.468878 folding paper
+2.3507253e-07 7.505433 massaging person's head
+
+For video 1p0_1clip_4: 
+
+Norm of logits: 47.585579
+
+Top 20 classes and probabilities
+0.2703683 7.3154755 welding
+0.15084341 6.7319326 blowing out candles
+0.06370781 5.8699975 smoking
+0.025614977 4.9588675 headbanging
+0.024084968 4.8972783 beatboxing
+0.023419926 4.8692775 air drumming
+0.022430656 4.826119 washing hands
+0.021571424 4.78706 opening bottle
+0.018639408 4.6409683 robot dancing
+0.015179252 4.43562 jumpstyle dancing
+0.011400911 4.1493835 rock scissors paper
+0.0098462915 4.002785 using remote controller (not gaming)
+0.009696385 3.9874434 cleaning floor
+0.00964587 3.9822202 finger snapping
+0.009624928 3.9800467 hoverboarding
+0.009479946 3.964869 punching bag
+0.009318704 3.9477139 playing paintball
+0.00926522 3.941958 headbutting
+0.008779363 3.8880942 doing nails
+0.008172802 3.816502 folding napkins
+
+For video 1p0_1clip_19: 
+
+Norm of logits: 56.695213
+
+Top 20 classes and probabilities
+0.76862967 10.714733 flying kite
+0.061803874 8.19409 hugging
+0.023649959 7.233485 robot dancing
+0.013883961 6.700858 yoga
+0.01233325 6.5824227 folding clothes
+0.008927712 6.259284 carrying baby
+0.008230946 6.178025 stretching arm
+0.0071287164 6.034255 sweeping floor
+0.00631053 5.9123435 mopping floor
+0.00622168 5.898164 snowkiting
+0.006059238 5.871708 cleaning floor
+0.005958913 5.855012 cleaning windows
+0.005413031 5.758933 ice fishing
+0.0038673126 5.4226837 ironing
+0.0037885248 5.4021006 contact juggling
+0.0034119703 5.297414 celebrating
+0.0031612995 5.221107 doing laundry
+0.0029881683 5.1647844 dancing macarena
+0.0020926052 4.8085337 dancing ballet
+0.0020757483 4.8004456 fixing hair
+
+For video 1p0_1clip_28: 
+
+Norm of logits: 46.547089
+
+Top 20 classes and probabilities
+0.1824456 6.8804045 beatboxing
+0.13825533 6.6030545 cleaning floor
+0.10111981 6.2902584 recording music
+0.07029164 5.926605 singing
+0.06878773 5.904978 cleaning windows
+0.032388747 5.1517634 using remote controller (not gaming)
+0.029799622 5.068448 spray painting
+0.015581018 4.420006 texting
+0.014480151 4.346731 sign language interpreting
+0.01444031 4.343976 dancing ballet
+0.013978154 4.311448 writing
+0.013579895 4.2825427 smoking
+0.013396025 4.2689104 washing hands
+0.012892381 4.230589 using computer
+0.012193277 4.174837 punching bag
+0.0107086515 4.0450044 high kick
+0.009352788 3.909627 answering questions
+0.008625052 3.8286233 taking a shower
+0.0066118077 3.5628095 whistling
+0.0061518336 3.4907026 giving or receiving award
+
+For video 1p0_1clip_30: 
+
+Norm of logits: 66.719612
+
+Top 20 classes and probabilities
+0.8199452 12.908681 unboxing
+0.08222949 10.608957 bookbinding
+0.037647936 9.827722 shredding paper
+0.011177446 8.613341 reading book
+0.004692778 7.745468 doing nails
+0.004517826 7.707474 sharpening knives
+0.00420463 7.6356297 spray painting
+0.0031818766 7.3569145 using computer
+0.0021088542 6.945588 folding paper
+0.0018685051 6.824582 building cabinet
+0.0018317621 6.804722 writing
+0.001825868 6.801499 waxing legs
+0.0017765472 6.774115 sharpening pencil
+0.0017296774 6.7473783 washing hands
+0.0016198037 6.6817484 making jewelry
+0.0014430967 6.5662346 changing oil
+0.0013376228 6.4903374 drinking
+0.0012095772 6.3897142 clay pottery making
+0.001155186 6.3437047 filling eyebrows
+0.0011025032 6.2970266 wrapping present
+
+For video 1p0_1clip_14: 
+
+Norm of logits: 72.927063
+
+Top 20 classes and probabilities
+0.46228358 12.046127 washing hands
+0.132324 10.795202 grooming dog
+0.1137186 10.643676 cleaning windows
+0.08038764 10.296809 washing dishes
+0.07469828 10.223406 cleaning toilet
+0.027382905 9.219868 brushing teeth
+0.026755162 9.196676 taking a shower
+0.017428737 8.768069 gargling
+0.011169124 8.323102 doing laundry
+0.009217942 8.131101 drinking beer
+0.007084418 7.8678465 drinking
+0.0058254884 7.6721916 drinking shots
+0.0042299 7.352127 washing hair
+0.0029072964 6.9771724 shaving head
+0.001915046 6.5596905 pumping fist
+0.0016954964 6.4379244 skydiving
+0.0014895389 6.3084154 shredding paper
+0.001337751 6.2009387 washing feet
+0.0013207077 6.1881166 trimming or shaving beard
+0.00103415 5.9435287 blowing nose
+
+For video 1p0_1clip_12: 
+
+Norm of logits: 93.302307
+
+Top 20 classes and probabilities
+0.81310546 17.924046 washing hair
+0.08011428 15.606639 dying hair
+0.07104044 15.486434 cleaning toilet
+0.008144713 13.320554 washing dishes
+0.007376184 13.221441 grooming dog
+0.0049267644 12.817867 doing laundry
+0.0038519676 12.571769 washing hands
+0.0032572872 12.404079 making snowman
+0.0021014689 11.965821 taking a shower
+0.001831763 11.828464 washing feet
+0.0011151454 11.33217 fixing hair
+0.0007723178 10.964826 massaging person's head
+0.0005980037 10.709026 skydiving
+0.0003422355 10.1509285 shaving legs
+0.00032892445 10.111258 cleaning shoes
+0.00022050872 9.711367 cleaning windows
+0.00019065484 9.565894 shaving head
+0.00016050476 9.393753 waxing back
+8.305028e-05 8.734876 getting a tattoo
+7.873578e-05 8.681527 massaging back
+
+For video 1p0_1clip_20: 
+
+Norm of logits: 91.247337
+
+Top 20 classes and probabilities
+0.996634 19.188938 reading book
+0.0015067025 12.694478 playing poker
+0.00033068078 11.177953 playing cards
+0.00029967344 11.079493 wrapping present
+0.00020900037 10.719135 ripping paper
+0.00015045365 10.390454 opening present
+0.00012621627 10.214796 crying
+0.000101626356 9.998102 writing
+6.089443e-05 9.485941 playing monopoly
+5.631642e-05 9.407785 shuffling cards
+5.4752876e-05 9.379629 counting money
+5.2517513e-05 9.337946 playing ukulele
+5.0528095e-05 9.299329 playing chess
+4.3527627e-05 9.150195 texting
+3.352071e-05 8.888963 folding paper
+3.3338765e-05 8.88352 using computer
+2.2582353e-05 8.493968 baby waking up
+2.0047692e-05 8.374913 doing nails
+1.7243485e-05 8.224234 eating chips
+1.7097713e-05 8.215744 hugging
+
+For video 1p0_1clip_29: 
+
+Norm of logits: 90.199013
+
+Top 20 classes and probabilities
+0.35258442 12.641086 unboxing
+0.28792146 12.438483 spray painting
+0.06990243 11.022896 making tea
+0.06718899 10.983305 using remote controller (not gaming)
+0.035725553 10.351662 cooking egg
+0.035690274 10.350674 plastering
+0.031103346 10.213111 changing oil
+0.018555785 9.696577 shredding paper
+0.010144505 9.092728 spraying
+0.0074401977 8.782693 bookbinding
+0.006297425 8.615936 using computer
+0.005135815 8.412034 cleaning floor
+0.0042005377 8.211008 counting money
+0.0041687153 8.203403 making a sandwich
+0.0041475953 8.198324 wrapping present
+0.004131614 8.194464 cooking chicken
+0.003721797 8.090002 folding paper
+0.0035636176 8.046572 setting table
+0.002848728 7.822668 assembling computer
+0.0027905 7.8020163 washing dishes
+
+For video 1p0_1clip_33: 
+
+Norm of logits: 63.249046
+
+Top 20 classes and probabilities
+0.14122158 8.177389 reading book
+0.10509029 7.881879 using remote controller (not gaming)
+0.09599556 7.791361 using computer
+0.087243214 7.695759 making tea
+0.0658433 7.4143367 applying cream
+0.048390813 7.106369 texting
+0.039908398 6.9136457 washing hands
+0.039785996 6.910574 giving or receiving award
+0.034464337 6.766984 doing nails
+0.031403005 6.6739626 unboxing
+0.029537456 6.612718 answering questions
+0.025994634 6.484949 sign language interpreting
+0.024393396 6.4213715 smoking
+0.019497845 6.197363 setting table
+0.018537203 6.1468387 tasting beer
+0.018172136 6.1269484 shredding paper
+0.010812351 5.607748 cleaning floor
+0.008069875 5.315197 checking tires
+0.007177393 5.197995 dying hair
+0.005356631 4.905394 cleaning shoes
+
+For video 1p0_1clip_26: 
+
+Norm of logits: 76.490608
+
+Top 20 classes and probabilities
+0.9522265 20.02313 using computer
+0.03225512 16.638004 playing controller
+0.01190752 15.641498 recording music
+0.0016473243 13.66348 using remote controller (not gaming)
+0.00088007824 13.036583 playing keyboard
+0.00061303104 12.674988 drumming fingers
+0.0003563224 12.132408 playing poker
+5.5358476e-05 10.270402 texting
+1.595115e-05 9.026103 counting money
+1.1861203e-05 8.729845 news anchoring
+4.7726153e-06 7.8194666 tapping guitar
+3.4950563e-06 7.5079217 tapping pen
+3.1646305e-06 7.4086084 playing organ
+1.5655108e-06 6.7047844 playing harmonica
+1.4329866e-06 6.616333 writing
+1.2558629e-06 6.484395 playing piano
+1.1974239e-06 6.4367447 playing guitar
+1.0628588e-06 6.3175344 folding paper
+6.523152e-07 5.8293447 bookbinding
+6.475176e-07 5.821963 running on treadmill
+
+For video 1p0_1clip_2: 
+
+Norm of logits: 76.372208
+
+Top 20 classes and probabilities
+0.7479501 15.875444 playing piano
+0.17843698 14.442344 playing keyboard
+0.045143265 13.067949 playing organ
+0.013130688 11.83306 using computer
+0.0050536245 10.878214 playing poker
+0.0039489935 10.631569 recording music
+0.003775861 10.586737 texting
+0.0003927673 8.32357 using remote controller (not gaming)
+0.00025316747 7.884404 driving car
+0.00018407087 7.565674 bookbinding
+0.0001607002 7.4298935 playing cello
+0.00013100199 7.2255654 playing cards
+0.00011827569 7.123371 folding paper
+0.00011727297 7.114857 writing
+9.357537e-05 6.88912 unboxing
+8.73277e-05 6.8200207 counting money
+6.4083266e-05 6.510536 wrapping present
+5.1995194e-05 6.301504 playing guitar
+4.9344646e-05 6.249182 playing violin
+4.1243486e-05 6.069846 drumming fingers
+
+For video 1p0_1clip_18: 
+
+Norm of logits: 60.913330
+
+Top 20 classes and probabilities
+0.68395823 11.157226 yoga
+0.07682886 8.970909 stretching leg
+0.065378465 8.809522 stretching arm
+0.033027865 8.12668 bandaging
+0.02429942 7.8197813 ironing
+0.00980209 6.9119244 washing feet
+0.007851781 6.690069 waxing legs
+0.007374272 6.627326 massaging back
+0.007171215 6.599404 making bed
+0.006536649 6.5067534 cleaning toilet
+0.006237246 6.4598675 folding napkins
+0.006102975 6.438105 massaging legs
+0.0054302444 6.321313 dancing ballet
+0.004778351 6.193424 folding clothes
+0.004749198 6.1873045 cleaning windows
+0.00468786 6.174305 wrapping present
+0.0037380406 5.9478903 massaging feet
+0.0030884559 5.757 cleaning shoes
+0.0029320286 5.7050233 cleaning floor
+0.0024640348 5.531129 mopping floor
+
+For video 1p0_1clip_6: 
+
+Norm of logits: 94.889153
+
+Top 20 classes and probabilities
+0.729522 18.408844 washing dishes
+0.2520723 17.34617 washing hands
+0.00431366 13.278241 spraying
+0.0037152504 13.128901 ironing
+0.0030573525 12.934004 cleaning windows
+0.0016139597 12.295145 cleaning shoes
+0.0015314962 12.2427 spray painting
+0.0009310945 11.74506 cleaning toilet
+0.00051622157 11.155235 pumping gas
+0.00040715744 10.917899 setting table
+0.00038881667 10.871807 building cabinet
+0.00038051236 10.850218 bending metal
+0.00032693532 10.698462 grooming dog
+0.00025873617 10.464508 cooking egg
+0.00015347266 9.942222 making bed
+0.0001272844 9.755123 making tea
+8.831864e-05 9.38965 making pizza
+8.5218046e-05 9.353912 cleaning floor
+7.6121054e-05 9.241024 scrambling eggs
+6.285203e-05 9.049482 changing oil
+
+For video 1p0_1clip_8: 
+
+Norm of logits: 66.425438
+
+Top 20 classes and probabilities
+0.98379534 15.5100565 washing hands
+0.0034843313 9.866915 cleaning toilet
+0.0030813345 9.744001 taking a shower
+0.002967589 9.706388 washing dishes
+0.0021316684 9.375544 washing hair
+0.00046922342 7.8619623 cleaning pool
+0.00042937967 7.773225 cleaning floor
+0.00036848878 7.6202936 abseiling
+0.00033929446 7.5377517 brushing teeth
+0.00030812714 7.4413958 ice fishing
+0.00026876671 7.304727 grooming dog
+0.00026829602 7.302974 cleaning shoes
+0.00019854985 7.0019236 opening bottle
+0.00017483029 6.874699 bungee jumping
+0.00017140259 6.8548985 playing ice hockey
+0.00014725706 6.703063 gargling
+0.00014431673 6.6828938 shaving legs
+0.0001290936 6.571421 ice skating
+0.0001090587 6.4027696 spraying
+8.847772e-05 6.193634 spray painting
+
+For video 1p0_1clip_23: 
+
+Norm of logits: 99.999298
+
+Top 20 classes and probabilities
+0.41419548 16.132374 making tea
+0.37337735 16.028625 sharpening pencil
+0.10481414 14.7582245 unboxing
+0.047572665 13.968294 playing cards
+0.03128043 13.549028 making sushi
+0.00560656 11.829973 shuffling cards
+0.005423482 11.796774 setting table
+0.0035330132 11.368187 baking cookies
+0.0033095176 11.302838 bookbinding
+0.0013326607 10.393213 playing chess
+0.0011417258 10.238577 barbequing
+0.001027253 10.132924 making jewelry
+0.0007551351 9.825177 spray painting
+0.0007313445 9.793165 using computer
+0.00069792836 9.746397 playing controller
+0.0005092663 9.431252 using remote controller (not gaming)
+0.0004665537 9.343654 playing poker
+0.0004180075 9.23378 making a sandwich
+0.0003034218 8.913404 making a cake
+0.00025910232 8.755504 cleaning shoes
+
+For video 1p0_1clip_32: 
+
+Norm of logits: 97.439789
+
+Top 20 classes and probabilities
+0.8915305 22.547134 shaving legs
+0.06186341 19.879124 massaging legs
+0.037637603 19.382198 waxing legs
+0.0045756535 17.274944 applying cream
+0.0020782829 16.485737 washing hands
+0.0014973423 16.157887 massaging feet
+0.00039773365 14.832222 washing feet
+0.0001677967 13.9691925 cleaning toilet
+0.00016694798 13.964122 massaging back
+3.240607e-05 12.324785 bandaging
+1.1199943e-05 11.262348 plastering
+9.996914e-06 11.148716 cleaning shoes
+4.7148997e-06 10.397167 waxing back
+4.413233e-06 10.331047 washing hair
+4.294202e-06 10.303705 taking a shower
+3.8097528e-06 10.184004 shining shoes
+2.5652246e-06 9.788486 stretching leg
+2.3057746e-06 9.681856 yoga
+2.0888947e-06 9.583075 folding napkins
+9.3132843e-07 8.775296 cleaning floor
+
+For video 1p0_1clip_35: 
+
+Norm of logits: 59.694668
+
+Top 20 classes and probabilities
+0.22197604 9.01784 spray painting
+0.14022382 8.558511 dying hair
+0.13873112 8.547809 cleaning toilet
+0.09636008 8.183363 cleaning windows
+0.03848416 7.2655177 unboxing
+0.030143686 7.0212464 cleaning shoes
+0.027893709 6.943672 drinking
+0.025172701 6.841031 doing laundry
+0.023214586 6.7600517 washing hands
+0.022556175 6.73128 cleaning floor
+0.021010285 6.660283 fixing hair
+0.019163644 6.568286 ironing
+0.014544839 6.292507 washing dishes
+0.012798299 6.164583 changing oil
+0.012539762 6.1441755 washing hair
+0.012468035 6.138439 texting
+0.01214275 6.1120033 making tea
+0.010768104 5.9918594 taking a shower
+0.008023717 5.697673 mopping floor
+0.0061380384 5.429776 plastering
+
+For video 1p0_1clip_11: 
+
+Norm of logits: 68.873009
+
+Top 20 classes and probabilities
+0.67753226 12.907637 cleaning toilet
+0.09571795 10.950585 washing hands
+0.073617674 10.688065 cleaning shoes
+0.069076724 10.624397 washing dishes
+0.023097657 9.528911 doing laundry
+0.013311845 8.977834 doing nails
+0.012986796 8.953113 taking a shower
+0.011454765 8.827585 ice fishing
+0.0035928974 7.6681385 washing hair
+0.0019562172 7.060192 grooming dog
+0.0014729875 6.776472 brushing teeth
+0.0014042978 6.728717 opening bottle
+0.0013015232 6.6527147 cleaning floor
+0.00093130703 6.318013 shaving legs
+0.0009141208 6.299387 laughing
+0.00068603863 6.012358 making jewelry
+0.0005128321 5.7213726 washing feet
+0.00051122595 5.718236 cleaning windows
+0.00046164854 5.616228 gargling
+0.00046035822 5.613429 using remote controller (not gaming)
+
+For video 1p0_1clip_15: 
+
+Norm of logits: 80.572258
+
+Top 20 classes and probabilities
+0.5060765 14.80036 opening bottle
+0.3849851 14.526876 cleaning floor
+0.042495683 12.323074 mopping floor
+0.01738977 11.429554 cleaning shoes
+0.016184643 11.357735 counting money
+0.011266122 10.995472 doing nails
+0.0046209577 10.104274 using remote controller (not gaming)
+0.0022591588 9.388664 unboxing
+0.0019822097 9.257884 cleaning toilet
+0.0017488268 9.132617 applying cream
+0.0017124242 9.111582 drinking
+0.0014796889 8.965504 drinking beer
+0.0010084271 8.582064 spray painting
+0.0006657444 8.166822 making tea
+0.0006401675 8.127646 checking tires
+0.000525999 7.931216 cleaning windows
+0.0003733106 7.5883274 catching or throwing frisbee
+0.00036796523 7.573905 cooking egg
+0.00033720658 7.4866123 tasting beer
+0.0002996773 7.368623 changing oil
+
+For video 1p0_1clip_10: 
+
+Norm of logits: 63.025402
+
+Top 20 classes and probabilities
+0.28874555 9.565712 doing nails
+0.19031154 9.1488285 cleaning floor
+0.13776797 8.825737 cleaning toilet
+0.086347364 8.358544 cleaning shoes
+0.049015988 7.7923126 mopping floor
+0.017936323 6.786994 unboxing
+0.015830273 6.6620903 using remote controller (not gaming)
+0.015815683 6.661168 opening bottle
+0.012462113 6.422859 dying hair
+0.011022336 6.30009 shredding paper
+0.010747799 6.274867 playing ice hockey
+0.010665023 6.2671356 changing oil
+0.010569249 6.258115 washing hands
+0.0103394585 6.2361336 sharpening pencil
+0.009411939 6.142145 fixing hair
+0.008269445 6.0127335 filling eyebrows
+0.0068409154 5.8230877 bobsledding
+0.006000226 5.691963 drinking beer
+0.0053815227 5.5831375 driving car
+0.0053079645 5.5693746 cleaning windows
+
+For video 1p0_1clip_36: 
+
+Norm of logits: 63.482727
+
+Top 20 classes and probabilities
+0.58451235 12.142269 dying hair
+0.21416765 11.13825 fixing hair
+0.036156584 9.35935 washing hands
+0.031854652 9.232675 washing hair
+0.029522078 9.15663 curling hair
+0.022863729 8.901043 brushing hair
+0.013208959 8.352386 cleaning toilet
+0.012369749 8.286745 shaving head
+0.0067130513 7.6755447 doing nails
+0.006458046 7.636818 drinking
+0.005779985 7.5258923 taking a shower
+0.0048973765 7.360191 washing dishes
+0.0041245674 7.1884522 smoking
+0.0036813123 7.0747604 applying cream
+0.0026149263 6.732727 brushing teeth
+0.002217315 6.567788 cleaning windows
+0.00180738 6.3633695 gargling
+0.0010937387 5.861093 cleaning shoes
+0.0010754073 5.8441906 spray painting
+0.0009700025 5.7410345 grooming dog
+
+

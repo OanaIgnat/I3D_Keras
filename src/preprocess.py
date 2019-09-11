@@ -152,19 +152,28 @@ def main(args):
         os.makedirs(args.path_output)
 
     # sample all video from video_path at specified frame rate (FRAME_RATE param)
-    sample_video(args.video_path, args.path_output)
+    if not os.listdir(args.path_output):
+        sample_video(args.video_path, args.path_output)
+    else:
+        print("Directory " + args.path_output + "is not empty")
 
     # make sure the frames are processed in order
     sorted_list_frames = read_frames(args.path_output)
     video_name = args.video_path.split("/")[-1][:-4]
 
-    rgb = run_rgb(sorted_list_frames)
     npy_rgb_output = ROOT_PATH + 'data/results/' + video_name + '_rgb.npy'
-    np.save(npy_rgb_output, rgb)
+    if not os.path.exists(npy_rgb_output) or os.stat(npy_rgb_output).st_size == 0:
+        rgb = run_rgb(sorted_list_frames)
+        np.save(npy_rgb_output, rgb)
+    else:
+        print("File " + npy_rgb_output + " exists already and it's not empty")
 
-    flow = run_flow(sorted_list_frames)
     npy_flow_output = ROOT_PATH + 'data/results/' + video_name + '_flow.npy'
-    np.save(npy_flow_output, flow)
+    if not os.path.exists(npy_flow_output) or os.stat(npy_flow_output).st_size == 0:
+        flow = run_flow(sorted_list_frames)
+        np.save(npy_flow_output, flow)
+    else:
+        print("File " + npy_flow_output + " exists already and it's not empty")
 
 
 def remove_options(parser, options):
@@ -186,6 +195,7 @@ if __name__ == "__main__":
     video_path = ROOT_PATH + "data/input_videos/"
     for filename in os.listdir(video_path):
         if filename.endswith((".mp4", ".avi")):
+
             parser.add_argument('--path_output', type=str, default=ROOT_PATH + "data/frames/" + filename[:-4] + "/", help=argparse.SUPPRESS)
 
             parser.add_argument('--video_path', type=str, default=ROOT_PATH + "data/input_videos/" + filename, help=argparse.SUPPRESS)
