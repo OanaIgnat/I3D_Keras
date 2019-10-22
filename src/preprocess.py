@@ -7,7 +7,6 @@ from tqdm import tqdm
 import tensorflow as tf
 import argparse
 
-
 SMALLEST_DIM = 256
 IMAGE_CROP_SIZE = 224
 FRAME_RATE = 25
@@ -16,6 +15,7 @@ if tf.test.is_gpu_available(cuda_only=True):
     ROOT_PATH = "/home/oignat/i3d_keras/"
 else:
     ROOT_PATH = "/local/oignat/Action_Recog/keras-kinetics-i3d/"
+
 
 # sample frames at 25 frames per second
 def sample_video(video_path, path_output):
@@ -99,7 +99,7 @@ def read_frames(video_path):
     list_frames = []
     for file in os.listdir(video_path):
         if file.endswith(".jpg"):
-            full_file_path = video_path + file
+            full_file_path = video_path + "/" + file
             list_frames.append(full_file_path)
     sorted_list_frames = sorted(list_frames)
     return sorted_list_frames
@@ -137,7 +137,6 @@ def pre_process_flow(flow_frame):
     return new_img
 
 
-
 #  Pixel values are truncated to the range [-20, 20], then rescaled between -1 and 1
 def compute_optical_flow(prev, curr):
     optical_flow = cv2.optflow.createOptFlow_DualTVL1()
@@ -147,61 +146,129 @@ def compute_optical_flow(prev, curr):
     return flow_frame
 
 
-def main(args):
-    if not os.path.exists(args.path_output):
-        os.makedirs(args.path_output)
+# def main(args):
+#
+#     # sample all video from video_path at specified frame rate (FRAME_RATE param)
+#     if not os.listdir(args.path_output + "/frames"):
+#         sample_video(args.video_path, args.path_output + "/frames")
+#     else:
+#         print("Directory " + args.path_output + "/frames" + " is not empty")
+#
+#     # make sure the frames are processed in order
+#     sorted_list_frames = read_frames(args.path_output)
+#     video_name = args.video_path.split("/")[-1][:-4]
+#
+#     # npy_rgb_output = ROOT_PATH + 'data/results_video/' + video_name + '_rgb.npy'
+#     npy_rgb_output = args.path_output + "/results_video/" + video_name + '_rgb.npy'
+#
+#     if not os.path.exists(npy_rgb_output) or os.stat(npy_rgb_output).st_size == 0:
+#         rgb = run_rgb(sorted_list_frames)
+#         np.save(npy_rgb_output, rgb)
+#     else:
+#         print("File " + npy_rgb_output + " exists already and it's not empty")
+#
+#     # npy_flow_output = ROOT_PATH + 'data/results_video/' + video_name + '_flow.npy'
+#     npy_flow_output = args.path_output + '/results_video/' + video_name + '_flow.npy'
+#     if not os.path.exists(npy_flow_output) or os.stat(npy_flow_output).st_size == 0:
+#         flow = run_flow(sorted_list_frames)
+#         np.save(npy_flow_output, flow)
+#     else:
+#         print("File " + npy_flow_output + " exists already and it's not empty")
 
-    # sample all video from video_path at specified frame rate (FRAME_RATE param)
+
+def main(args):
+
+    #sample all video from video_path at specified frame rate (FRAME_RATE param)
+
     if not os.listdir(args.path_output):
         sample_video(args.video_path, args.path_output)
     else:
-        print("Directory " + args.path_output + "is not empty")
+        print("Directory " + args.path_output + " is not empty")
 
     # make sure the frames are processed in order
     sorted_list_frames = read_frames(args.path_output)
     video_name = args.video_path.split("/")[-1][:-4]
+    path_output_results = "data/results/"
+    npy_rgb_output = path_output_results + video_name + '_rgb.npy'
 
-    npy_rgb_output = ROOT_PATH + 'data/results/' + video_name + '_rgb.npy'
+    if not os.path.exists(path_output_results):
+        os.makedirs(path_output_results)
+
     if not os.path.exists(npy_rgb_output) or os.stat(npy_rgb_output).st_size == 0:
         rgb = run_rgb(sorted_list_frames)
         np.save(npy_rgb_output, rgb)
     else:
         print("File " + npy_rgb_output + " exists already and it's not empty")
 
-    npy_flow_output = ROOT_PATH + 'data/results/' + video_name + '_flow.npy'
-    if not os.path.exists(npy_flow_output) or os.stat(npy_flow_output).st_size == 0:
-        flow = run_flow(sorted_list_frames)
-        np.save(npy_flow_output, flow)
-    else:
-        print("File " + npy_flow_output + " exists already and it's not empty")
+    npy_flow_output = path_output_results + video_name + '_flow.npy'
+
+    # TODO: Run flow later
+    # if not os.path.exists(npy_flow_output) or os.stat(npy_flow_output).st_size == 0:
+    #     flow = run_flow(sorted_list_frames)
+    #     np.save(npy_flow_output, flow)
+    # else:
+    #     print("File " + npy_flow_output + " exists already and it's not empty")
 
 
 def remove_options(parser, options):
     for option in options:
         for action in parser._actions:
             if vars(action)['option_strings'][0] == option:
-                parser._handle_conflict_resolve(None,[(option,action)])
+                parser._handle_conflict_resolve(None, [(option, action)])
                 break
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
 
-
     # parser.add_argument('--path_output', type=str, default=root_path + "data/frames/1p0_1mini_1/")
-
+    #
     # parser.add_argument('--video_path', type=str,
     #                     default="../large_data/miniclips_lifestyle_vlogs/miniclips_dataset_new/1p0_1mini_1.mp4")
-
-    video_path = ROOT_PATH + "data/input_videos/"
+    # ---------------------------------------------------------------------------------------------------------------
+    # video_path = ROOT_PATH + "data/input_videos/"
+    # video_path = "/local/oignat/Action_Recog/temporal_annotation/miniclips/"
+    video_path = "/local/oignat/Action_Recog/large_data/10s_clips/"
+    path_output = ROOT_PATH + "data/frames/"
     for filename in os.listdir(video_path):
-        if filename.endswith((".mp4", ".avi")):
+        if filename.endswith((".mp4", ".avi")) and ("1p0_1mini_1_" not in filename) and ("1p0_1mini_2_" not in filename) and "1p0" in filename:
+        # if filename.endswith((".mp4", ".avi")) and ("1p0_1mini_2" in filename):
 
-            parser.add_argument('--path_output', type=str, default=ROOT_PATH + "data/frames/" + filename[:-4] + "/", help=argparse.SUPPRESS)
+            if not os.path.exists(path_output + filename[:-4]):
+                os.makedirs(path_output + filename[:-4])
 
-            parser.add_argument('--video_path', type=str, default=ROOT_PATH + "data/input_videos/" + filename, help=argparse.SUPPRESS)
+            parser.add_argument('--path_output', type=str, default=path_output + filename[:-4], help=argparse.SUPPRESS)
+
+            parser.add_argument('--video_path', type=str, default=video_path + filename, help=argparse.SUPPRESS)
 
             args = parser.parse_args()
 
             main(args)
 
             remove_options(parser, ['--path_output', '--video_path'])
+    # ---------------------------------------------------------------------------------------------------------------
+
+    # path_input_10s_folders = "/local/oignat/Action_Recog/large_data/10s_clips/"
+    # path_output_10s_folders = "/local/oignat/Action_Recog/large_data/10s_clips_processed/"
+    # dirs = os.listdir(path_input_10s_folders)
+    # for dir in dirs:
+    #     for filename in os.listdir(path_input_10s_folders + dir):
+    #         if filename.endswith((".mp4", ".avi")):
+    #             input_video = path_input_10s_folders + dir + "/" + filename
+    #
+    #             output_folder = path_output_10s_folders + dir + "/" + filename[:-4]
+    #             if not os.path.exists(output_folder + "/frames"):
+    #                 os.makedirs(output_folder + "/frames")
+    #
+    #             if not os.path.exists(output_folder + "/results_video"):
+    #                 os.makedirs(output_folder + "/results_video")
+    #
+    #             parser.add_argument('--path_output', type=str, default=output_folder, help=argparse.SUPPRESS)
+    #
+    #             parser.add_argument('--video_path', type=str, default=input_video, help=argparse.SUPPRESS)
+    #
+    #             args = parser.parse_args()
+    #
+    #             main(args)
+    #
+    #             remove_options(parser, ['--path_output', '--video_path'])

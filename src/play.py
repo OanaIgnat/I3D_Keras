@@ -7,7 +7,7 @@ def read_time_per_clip():
     return time_clips
 
 def read_results_i3d():
-    with open('data/results.txt', 'r') as file:
+    with open('data/results_video.txt', 'r') as file:
         data = file.read().replace('\n', '|')
 
     dict_results = {}

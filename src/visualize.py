@@ -6,7 +6,7 @@ import numpy as np
 import tensorflow as tf
 from preprocess import IMAGE_CROP_SIZE, ROOT_PATH
 
-#  For the Flow data, we added a third channel of all 0, then added 0.5 to the entire array, so that results are also between 0 and 1
+#  For the Flow data, we added a third channel of all 0, then added 0.5 to the entire array, so that results_video are also between 0 and 1
 def show_flow(video_path_npy):
     flow = np.load(video_path_npy)
     flow = np.squeeze(flow, axis=0)  # remove the batch dimension
@@ -113,7 +113,7 @@ if __name__ == "__main__":
         root_path = "/local/oignat/Action_Recog/keras-kinetics-i3d/"
 
 
-    parser.add_argument('--video_name', type=str, default=root_path + "data/results/cricket")
+    parser.add_argument('--video_name', type=str, default=root_path + "data/results_video/cricket")
     parser.add_argument('--path_output_video', type=str, default=root_path + 'data/viz_results/')
     args = parser.parse_args()
 

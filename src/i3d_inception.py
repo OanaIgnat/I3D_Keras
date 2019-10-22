@@ -272,7 +272,7 @@ def Inception_Inflated3d(include_top=True,
         endpoint_logit: (boolean) optional. If True, the model's forward pass
             will end at producing logits. Otherwise, softmax is applied after producing
             the logits to produce the class probabilities prediction. Setting this parameter 
-            to True is particularly useful when you want to combine results of rgb model
+            to True is particularly useful when you want to combine results_video of rgb model
             and optical flow model.
             - `True` end model forward pass at logit output
             - `False` go further after logit to produce softmax predictions
@@ -515,7 +515,6 @@ def Inception_Inflated3d(include_top=True,
         h = int(x.shape[2])
         w = int(x.shape[3])
         x = AveragePooling3D((2, h, w), strides=(1, 1, 1), padding='valid', name='global_avg_pool')(x)
-
 
 
     inputs = img_input
