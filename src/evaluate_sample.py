@@ -3,6 +3,7 @@ Loads pretrained model of I3d Inception architecture for the paper: 'https://arx
 Evaluates a RGB and Flow sample similar to the paper's github repo: 'https://github.com/deepmind/kinetics-i3d'
 '''
 import os
+from os import path
 
 import numpy as np
 import argparse
@@ -10,6 +11,7 @@ from preprocess import IMAGE_CROP_SIZE, ROOT_PATH, remove_options
 
 from i3d_inception import Inception_Inflated3d
 import tensorflow as tf
+from tqdm import tqdm
 
 # INPUT_SHAPE = 55
 FRAME_HEIGHT = 224
@@ -163,11 +165,14 @@ if __name__ == '__main__':
 
     set_video_names = set()
     video_path = "data/results/"
+    path_output_features = "data/results_features/"
+
     for filename in os.listdir(video_path):
-        if filename.endswith((".npy")) and "1p0_1mini_1_" not in filename:
-            video_name = "_".join(filename.split("_")[:-1])
+        video_name = "_".join(filename.split("_")[:-1])
+        if filename.endswith((".npy")) and not path.exists(path_output_features + video_name + ".npy"):
             set_video_names.add(video_name)
-    for video_name in list(set_video_names):
+
+    for video_name in tqdm(list(set_video_names)):
         # channel = "_".join(video_name.split("_")[0:3])
         # if channel != "1p1_2mini_6":
         #     continue
