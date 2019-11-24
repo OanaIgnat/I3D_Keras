@@ -118,22 +118,13 @@ def read_sorted_frames(video_path):
 def read_frames(video_path, path_output):
     sorted_list_frames = read_sorted_frames(path_output)
     index = 1
-    # if len(sorted_list_frames) < 10:
-    #     return []
     while len(sorted_list_frames) < 64:
         os.system("ffmpeg -i {0} -vf fps={1} {2}/frame_%05d.jpg".format(video_path, 30 * index,
                                                                         path_output))
         sorted_list_frames = read_sorted_frames(path_output)
         index += 1
 
-        # if video_name not in dict_less_64.keys():
-        #     dict_less_64[video_name] = []
-        # dict_less_64[video_name].append((video_path.split("/")[-1], len(sorted_list_frames)))
-        # l = dict_less_64[video_name]
-        # dict_less_64[video_name] = sorted(l, key=lambda x: x[0])
-
     n = len(sorted_list_frames) - 64
-
     return sorted_list_frames[int(n / 2): int(n / 2) + 64]
 
 
@@ -176,37 +167,6 @@ def compute_optical_flow(prev, curr):
     flow_frame = np.clip(flow_frame, -20, 20)
     flow_frame = flow_frame / 20.0
     return flow_frame
-
-
-# def main(args):
-#
-#     # sample all video from video_path at specified frame rate (FRAME_RATE param)
-#     if not os.listdir(args.path_output + "/frames"):
-#         sample_video(args.video_path, args.path_output + "/frames")
-#     else:
-#         print("Directory " + args.path_output + "/frames" + " is not empty")
-#
-#     # make sure the frames are processed in order
-#     sorted_list_frames = read_frames(args.path_output)
-#     video_name = args.video_path.split("/")[-1][:-4]
-#
-#     # npy_rgb_output = ROOT_PATH + 'data/results_video/' + video_name + '_rgb.npy'
-#     npy_rgb_output = args.path_output + "/results_video/" + video_name + '_rgb.npy'
-#
-#     if not os.path.exists(npy_rgb_output) or os.stat(npy_rgb_output).st_size == 0:
-#         rgb = run_rgb(sorted_list_frames)
-#         np.save(npy_rgb_output, rgb)
-#     else:
-#         print("File " + npy_rgb_output + " exists already and it's not empty")
-#
-#     # npy_flow_output = ROOT_PATH + 'data/results_video/' + video_name + '_flow.npy'
-#     npy_flow_output = args.path_output + '/results_video/' + video_name + '_flow.npy'
-#     if not os.path.exists(npy_flow_output) or os.stat(npy_flow_output).st_size == 0:
-#         flow = run_flow(sorted_list_frames)
-#         np.save(npy_flow_output, flow)
-#     else:
-#         print("File " + npy_flow_output + " exists already and it's not empty")
-
 
 def main(args):
     # sample all video from video_path at specified frame rate (FRAME_RATE param)
