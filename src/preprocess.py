@@ -182,7 +182,7 @@ def main(args):
     if not sorted_list_frames:
         print("File " + video_name + " # frames < 10")
         return
-    path_output_results = ROOT_PATH + "data/results/"
+    path_output_results = ROOT_PATH + "data/results_non_overlapping/"
     npy_rgb_output = path_output_results + video_name + '_rgb.npy'
 
     if not os.path.exists(path_output_results):
@@ -264,8 +264,8 @@ if __name__ == "__main__":
 
     video_path = "/local2/oignat/3s_clips/"
     path_output = ROOT_PATH + "data/frames/"
-    # miniclips_path = "/local2/oignat/miniclips/"
-    miniclips_path = "/local/oignat/Action_Recog/temporal_annotation/miniclips/"
+    miniclips_path = "/local2/oignat/miniclips/"
+    # miniclips_path = "/local/oignat/Action_Recog/temporal_annotation/miniclips/"
     channels = ["1p0", "1p1", "2p0", "2p1", "3p0", "3p1"]
     # channels = ["4p0","4p1", "5p0", "5p1"]
     # channels = ["6p0","6p1", "7p0", "7p1"]
@@ -281,7 +281,8 @@ if __name__ == "__main__":
                     print(video_name + "not in " + channel)
                     continue
 
-                path_output_results = ROOT_PATH + "data/results/"
+                # path_output_results = ROOT_PATH + "data/results/"
+                path_output_results = ROOT_PATH + "data/results_non_overlapping/"
                 npy_rgb_output = path_output_results + filename.split("/")[-1][:-4] + '_rgb.npy'
                 if os.path.exists(npy_rgb_output) and os.stat(npy_rgb_output).st_size != 0:
                     print(npy_rgb_output + " does exist!")
@@ -301,8 +302,8 @@ if __name__ == "__main__":
 
                 main(args)
 
-                # os.system("rm -r " + path_output + filename[:-4])  # remove frames
-                # os.system("rm " + video_path + filename)  # remove 10s clips
+                os.system("rm -r " + path_output + filename[:-4])  # remove frames
+                os.system("rm " + video_path + filename)  # remove 10s clips
 
                 remove_options(parser, ['--path_output', '--video_path'])
 
