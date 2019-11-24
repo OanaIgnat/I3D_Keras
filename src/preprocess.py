@@ -1,3 +1,5 @@
+import glob
+import subprocess
 import time
 
 import cv2
@@ -9,21 +11,26 @@ import argparse
 
 SMALLEST_DIM = 256
 IMAGE_CROP_SIZE = 224
-FRAME_RATE = 25
+FRAME_RATE = 24
 
 if tf.test.is_gpu_available(cuda_only=True):
-    ROOT_PATH = "/home/oignat/i3d_keras/"
+    ROOT_PATH = "/local2/oignat/i3d_keras/"
 else:
-    ROOT_PATH = "/local/oignat/Action_Recog/keras-kinetics-i3d/"
+    ROOT_PATH = "/local/oignat/Action_Recog/i3d_keras/"
+    # ROOT_PATH = "/local2/oignat/large_data/"
 
 
 # sample frames at 25 frames per second
 def sample_video(video_path, path_output):
     # for filename in os.listdir(video_path):
     if video_path.endswith((".mp4", ".avi")):
-        # filename = video_path + filename
-        os.system("ffmpeg -r {1} -i {0} -q:v 2 {2}/frame_%05d.jpg".format(video_path, FRAME_RATE,
-                                                                          path_output))
+        # os.system("ffmpeg -r {1} -i {0} -q:v 2 {2}/frame_%05d.jpg".format(video_path, FRAME_RATE,
+        #                                                                   path_output))
+
+        os.system("ffmpeg -i {0} -vf fps={1} {2}/frame_%05d.jpg".format(video_path, FRAME_RATE,
+                                                                        path_output))
+
+
     else:
         raise ValueError("Video path is not the name of video file (.mp4 or .avi)")
 
@@ -79,6 +86,9 @@ def run_rgb(sorted_list_frames):
     print("Running preprocessing rgb ...")
     for full_file_path in tqdm(sorted_list_frames):
         img = cv2.imread(full_file_path, cv2.IMREAD_UNCHANGED)
+        # if not img:
+        #     result = np.append(result, result[-1], axis=0)
+        #     continue
         img = pre_process_rgb(img)
         new_img = np.reshape(img, (1, IMAGE_CROP_SIZE, IMAGE_CROP_SIZE, 3))
         result = np.append(result, new_img, axis=0)
@@ -95,7 +105,7 @@ def pre_process_rgb(img):
     return img
 
 
-def read_frames(video_path):
+def read_sorted_frames(video_path):
     list_frames = []
     for file in os.listdir(video_path):
         if file.endswith(".jpg"):
@@ -103,6 +113,28 @@ def read_frames(video_path):
             list_frames.append(full_file_path)
     sorted_list_frames = sorted(list_frames)
     return sorted_list_frames
+
+
+def read_frames(video_path, path_output):
+    sorted_list_frames = read_sorted_frames(path_output)
+    index = 1
+    # if len(sorted_list_frames) < 10:
+    #     return []
+    while len(sorted_list_frames) < 64:
+        os.system("ffmpeg -i {0} -vf fps={1} {2}/frame_%05d.jpg".format(video_path, 30 * index,
+                                                                        path_output))
+        sorted_list_frames = read_sorted_frames(path_output)
+        index += 1
+
+        # if video_name not in dict_less_64.keys():
+        #     dict_less_64[video_name] = []
+        # dict_less_64[video_name].append((video_path.split("/")[-1], len(sorted_list_frames)))
+        # l = dict_less_64[video_name]
+        # dict_less_64[video_name] = sorted(l, key=lambda x: x[0])
+
+    n = len(sorted_list_frames) - 64
+
+    return sorted_list_frames[int(n / 2): int(n / 2) + 64]
 
 
 def run_flow(sorted_list_frames):
@@ -177,18 +209,20 @@ def compute_optical_flow(prev, curr):
 
 
 def main(args):
-
-    #sample all video from video_path at specified frame rate (FRAME_RATE param)
-
+    # sample all video from video_path at specified frame rate (FRAME_RATE param)
     if not os.listdir(args.path_output):
         sample_video(args.video_path, args.path_output)
     else:
         print("Directory " + args.path_output + " is not empty")
 
     # make sure the frames are processed in order
-    sorted_list_frames = read_frames(args.path_output)
+    sorted_list_frames = read_frames(args.video_path, args.path_output)
+
     video_name = args.video_path.split("/")[-1][:-4]
-    path_output_results = "data/results/"
+    if not sorted_list_frames:
+        print("File " + video_name + " # frames < 10")
+        return
+    path_output_results = ROOT_PATH + "data/results/"
     npy_rgb_output = path_output_results + video_name + '_rgb.npy'
 
     if not os.path.exists(path_output_results):
@@ -196,11 +230,12 @@ def main(args):
 
     if not os.path.exists(npy_rgb_output) or os.stat(npy_rgb_output).st_size == 0:
         rgb = run_rgb(sorted_list_frames)
+        print(rgb.shape)
         np.save(npy_rgb_output, rgb)
     else:
         print("File " + npy_rgb_output + " exists already and it's not empty")
 
-    npy_flow_output = path_output_results + video_name + '_flow.npy'
+    # npy_flow_output = path_output_results + video_name + '_flow.npy'
 
     # TODO: Run flow later
     # if not os.path.exists(npy_flow_output) or os.stat(npy_flow_output).st_size == 0:
@@ -218,6 +253,45 @@ def remove_options(parser, options):
                 break
 
 
+def system_call(command):
+    p = subprocess.Popen([command], stdout=subprocess.PIPE, shell=True)
+    return p.stdout.read()
+
+
+def create_3s_clips(path_input_video, path_output_video):
+    miniclip = path_input_video.split("/")[-1][:-4]
+    # path_output_video = "../large_data/10s_clips/"
+    if not os.path.exists(path_output_video):
+        os.makedirs(path_output_video)
+
+    # consecutive clips
+    # command = "ffmpeg -i " + path_input_video + " -acodec copy -f segment -segment_time 3 -vcodec copy -reset_timestamps 1 -map 0 " \
+    #           + path_output_video + miniclip + "_%03d.mp4"
+    # command = "ffmpeg -hide_banner  -err_detect ignore_err -i " + path_input_video + " -r 24 -codec:v libx264  -vsync 1  -codec:a aac  -ac 2  -ar 48k  -f segment   -preset fast  -segment_format mpegts  -segment_time 0.5 -force_key_frames \"expr:gte(t, n_forced * 3)\" " + path_output_video + miniclip + "_%03d.mp4"
+
+    # overlapping clips
+    # command_clip_length = "ffprobe -i " + path_input_video + " -show_format | grep duration"
+    command_clip_length = "ffprobe -i " + path_input_video + " -show_format -v quiet | sed -n 's/duration=//p'"
+    clip_length = system_call(command_clip_length)
+    clip_length = int(float(clip_length.strip()))
+    # 1 second
+    for start_clip in range(0, clip_length - 3):
+        command = "ffmpeg -ss " + str(
+            start_clip) + " -i " + path_input_video + " -t 3.000 " + path_output_video + miniclip + "_{0:03}.mp4".format(start_clip+1)
+        os.system(command)
+
+
+def create_clips(path_input_video, path_output_video, channels):
+    list_videos = glob.glob(path_input_video + "*.mp4")
+
+    for video_file in list_videos:
+        miniclip = video_file.split("/")[-1][:-4]
+        channel = miniclip.split("_")[0]
+        if channel not in channels:
+            continue
+        create_3s_clips(video_file, path_output_video)
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
 
@@ -226,26 +300,53 @@ if __name__ == "__main__":
     # parser.add_argument('--video_path', type=str,
     #                     default="../large_data/miniclips_lifestyle_vlogs/miniclips_dataset_new/1p0_1mini_1.mp4")
     # ---------------------------------------------------------------------------------------------------------------
-    # video_path = ROOT_PATH + "data/input_videos/"
-    # video_path = "/local/oignat/Action_Recog/temporal_annotation/miniclips/"
-    video_path = "/local/oignat/Action_Recog/large_data/10s_clips/"
+
+    # video_path = "/local2/oignat/large_data/" + "10s_clips/"
+
+    video_path = "/local2/oignat/3s_clips/"
     path_output = ROOT_PATH + "data/frames/"
-    for filename in os.listdir(video_path):
-        if filename.endswith((".mp4", ".avi")) and ("1p0_1mini_1_" not in filename) and ("1p0_1mini_2_" not in filename) and "1p0" in filename:
-        # if filename.endswith((".mp4", ".avi")) and ("1p0_1mini_2" in filename):
+    # miniclips_path = "/local2/oignat/miniclips/"
+    miniclips_path = "/local/oignat/Action_Recog/temporal_annotation/miniclips/"
+    channels = ["1p0", "1p1", "2p0", "2p1", "3p0", "3p1"]
+    # channels = ["4p0","4p1", "5p0", "5p1"]
+    # channels = ["6p0","6p1", "7p0", "7p1"]
+    # channels = ["1p0"]
+    for channel in channels:
+        # if channel not in ["1p0", "4p0", "6p0"]:
+        create_clips(miniclips_path, video_path, channel)
+        # print("Created 3s clips for channel " + channel)
+        for filename in os.listdir(video_path):
+            if filename.endswith((".mp4", ".avi")):
+                video_name = "_".join(filename.split("_")[:-1])
+                if video_name.split("_")[0] != channel:
+                    print(video_name + "not in " + channel)
+                    continue
 
-            if not os.path.exists(path_output + filename[:-4]):
-                os.makedirs(path_output + filename[:-4])
+                path_output_results = ROOT_PATH + "data/results/"
+                npy_rgb_output = path_output_results + filename.split("/")[-1][:-4] + '_rgb.npy'
+                if os.path.exists(npy_rgb_output) and os.stat(npy_rgb_output).st_size != 0:
+                    print(npy_rgb_output + " does exist!")
+                    continue
+                else:
+                    print(npy_rgb_output + " does not exist!")
 
-            parser.add_argument('--path_output', type=str, default=path_output + filename[:-4], help=argparse.SUPPRESS)
+                if not os.path.exists(path_output + filename[:-4]):
+                    os.makedirs(path_output + filename[:-4])
 
-            parser.add_argument('--video_path', type=str, default=video_path + filename, help=argparse.SUPPRESS)
+                parser.add_argument('--path_output', type=str, default=path_output + filename[:-4],
+                                    help=argparse.SUPPRESS)
 
-            args = parser.parse_args()
+                parser.add_argument('--video_path', type=str, default=video_path + filename, help=argparse.SUPPRESS)
 
-            main(args)
+                args = parser.parse_args()
 
-            remove_options(parser, ['--path_output', '--video_path'])
+                main(args)
+
+                # os.system("rm -r " + path_output + filename[:-4])  # remove frames
+                # os.system("rm " + video_path + filename)  # remove 10s clips
+
+                remove_options(parser, ['--path_output', '--video_path'])
+
     # ---------------------------------------------------------------------------------------------------------------
 
     # path_input_10s_folders = "/local/oignat/Action_Recog/large_data/10s_clips/"
