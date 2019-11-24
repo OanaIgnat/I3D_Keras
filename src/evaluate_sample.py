@@ -6,9 +6,6 @@ import os
 from os import path
 
 import numpy as np
-import argparse
-from preprocess import IMAGE_CROP_SIZE, ROOT_PATH, remove_options
-
 from i3d_inception import Inception_Inflated3d
 import tensorflow as tf
 from tqdm import tqdm
@@ -25,173 +22,63 @@ NUM_CLASSES = 400
 LABEL_MAP_PATH = 'data/label_map.txt'
 
 
-def main(args):
-    SAMPLE_DATA_PATH = {
-        # 'rgb' : 'data/v_CricketShot_g04_c01_rgb.npy',
-        # 'rgb': 'data/results_video/' + args.video_name + "_rgb.npy",
-        # 'flow': 'data/results_video/'+ args.video_name + "_flow.npy"
-        'rgb': "data/results/" + args.video_name + "_rgb.npy",
-        'flow': "data/results/" + args.video_name + "_flow.npy"
+def load_model(include_top_value):
+    # build model for RGB data
+    # and load pretrained weights (trained on kinetics dataset only)
+    rgb_model = Inception_Inflated3d(
+        include_top=include_top_value,
+        weights='rgb_kinetics_only',
+        input_shape=(INPUT_SHAPE, FRAME_HEIGHT, FRAME_WIDTH, NUM_RGB_CHANNELS),
+        classes=NUM_CLASSES)
+    return rgb_model
 
-    }
 
-    # load the kinetics classes
-    kinetics_classes = [x.strip() for x in open(LABEL_MAP_PATH, 'r')]
+def save_data(video_name, rgb_model, rgb_sample):
+    # make prediction
+    start_time = time.time()
+    rgb_logits = rgb_model.predict(rgb_sample)
+    print("---rgb_model.predict(rgb_sample):  %s seconds ---" % (time.time() - start_time))
 
-    if args.eval_type in ['rgb', 'joint']:
-
-        # load RGB sample (just one example)
-        rgb_sample = np.load(SAMPLE_DATA_PATH['rgb'])
-        INPUT_SHAPE = rgb_sample.shape[1]
-        if INPUT_SHAPE < 8:
-            print(SAMPLE_DATA_PATH['rgb'] + "smaller than 8s")
-            return
-
-        if args.no_imagenet_pretrained:
-            # build model for RGB data
-            # and load pretrained weights (trained on kinetics dataset only)
-            rgb_model = Inception_Inflated3d(
-                include_top=args.include_top,
-                weights='rgb_kinetics_only',
-                input_shape=(INPUT_SHAPE, FRAME_HEIGHT, FRAME_WIDTH, NUM_RGB_CHANNELS),
-                classes=NUM_CLASSES)
-        else:
-            # build model for RGB data
-            # and load pretrained weights (trained on imagenet and kinetics dataset)
-            rgb_model = Inception_Inflated3d(
-                include_top=args.include_top,
-                weights='rgb_imagenet_and_kinetics',
-                input_shape=(INPUT_SHAPE, FRAME_HEIGHT, FRAME_WIDTH, NUM_RGB_CHANNELS),
-                classes=NUM_CLASSES)
-
-        start_time = time.time()
-        # make prediction
-        rgb_logits = rgb_model.predict(rgb_sample)
-        print("---rgb_model.predict(rgb_sample):  %s seconds ---" % (time.time() - start_time))
-        if not args.include_top:
-            start_time = time.time()
-            path_output_features = "data/results_features/"
-            if not os.path.exists(path_output_features):
-                os.makedirs(path_output_features)
-            np.save(path_output_features + args.video_name + ".npy", rgb_logits)
-            print("---np.save:  %s seconds ---" % (time.time() - start_time))
-
-            return
-
-    if args.eval_type in ['flow', 'joint']:
-
-        # load flow sample (just one example)
-        flow_sample = np.load(SAMPLE_DATA_PATH['flow'])
-        INPUT_SHAPE = flow_sample.shape[1]
-
-        if args.no_imagenet_pretrained:
-            # build model for optical flow data
-            # and load pretrained weights (trained on kinetics dataset only)
-            flow_model = Inception_Inflated3d(
-                include_top=args.include_top,
-                weights='flow_kinetics_only',
-                input_shape=(INPUT_SHAPE, FRAME_HEIGHT, FRAME_WIDTH, NUM_FLOW_CHANNELS),
-                classes=NUM_CLASSES)
-        else:
-            # build model for optical flow data
-            # and load pretrained weights (trained on imagenet and kinetics dataset)
-            flow_model = Inception_Inflated3d(
-                include_top=args.include_top,
-                weights='flow_imagenet_and_kinetics',
-                input_shape=(INPUT_SHAPE, FRAME_HEIGHT, FRAME_WIDTH, NUM_FLOW_CHANNELS),
-                classes=NUM_CLASSES)
-
-        # make prediction
-        flow_logits = flow_model.predict(flow_sample)
-        if not args.include_top:
-            path_output_features = "data/results_features/"
-            if not os.path.exists(path_output_features):
-                os.makedirs(path_output_features)
-            np.save(path_output_features + args.video_name + ".npy", flow_logits)
-
-            return
-
-    # produce final model logits
-    if args.eval_type == 'rgb':
-        sample_logits = rgb_logits
-    elif args.eval_type == 'flow':
-        sample_logits = flow_logits
-    else:  # joint
-        sample_logits = rgb_logits + flow_logits
-
-    # produce softmax output from model logit for class probabilities
-    sample_logits = sample_logits[0]  # we are dealing with just one example
-    sample_predictions = np.exp(sample_logits) / np.sum(np.exp(sample_logits))
-
-    sorted_indices = np.argsort(sample_predictions)[::-1]
-    print("\nFor video " + args.video_name + ": ")
-    print('\nNorm of logits: %f' % np.linalg.norm(sample_logits))
-    print('\nTop 5 classes and probabilities')
-    for index in sorted_indices[:5]:
-        print(sample_predictions[index], sample_logits[index], kinetics_classes[index])
+    # path_output_features = "data/results_features/"
+    path_output_features = "data/results_logits/"
+    if not os.path.exists(path_output_features):
+        os.makedirs(path_output_features)
+    start_time = time.time()
+    np.save(path_output_features + video_name + ".npy", rgb_logits)
+    print("---np.save:  %s seconds ---" % (time.time() - start_time))
 
     return
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
-
-    # parse arguments
-    # TODO: add joint (also flow)
-    # parser.add_argument('--eval-type',
-    #                     help='specify model type. 1 stream (rgb or flow) or 2 stream (joint = rgb and flow).',
-    #                     type=str, choices=['rgb', 'flow', 'joint'], default='joint')
-
-    parser.add_argument('--eval-type',
-                        help='specify model type. 1 stream (rgb or flow) or 2 stream (joint = rgb and flow).',
-                        type=str, choices=['rgb', 'flow', 'joint'], default='rgb')
-
-    parser.add_argument('--no-imagenet-pretrained',
-                        help='If set, load model weights trained only on kinetics dataset. Otherwise, load model weights trained on imagenet and kinetics dataset.',
-                        action='store_true')
-
-    parser.add_argument('--include_top', type=str, default=False)
-    # set_video_names = set()
-    # video_path = ROOT_PATH + "data/results_video/"
-    # for filename in os.listdir(video_path):
-    #     if filename.endswith((".npy")):
-    #         video_name = "_".join(filename.split("_")[:-1])
-    #         set_video_names.add(video_name)
-    # for video_name in list(set_video_names):
-    #     parser.add_argument('--video_name', type=str, default=video_name)
-    #
-    #     args = parser.parse_args()
-    #     main(args)
-    #
-    #     remove_options(parser, ['--video_name'])
-    # -------------------------------------------------------------
-
-    # parser.add_argument('--video_name', type=str, default="2Y8XQ")
-    # -------------------------------------------------------------
 
     set_video_names = set()
     video_path = "data/results/"
-    path_output_features = "data/results_features/"
+    # path_output_features = "data/results_features_3s/"
+    path_output_features = "data/results_logits/"
 
     for filename in os.listdir(video_path):
         video_name = "_".join(filename.split("_")[:-1])
-        if video_name.split("_")[0] not in ["1p0", "1p1"]:
-            continue
         if filename.endswith((".npy")) and not path.exists(path_output_features + video_name + ".npy"):
-            #  data = np.load(video_path + video_name + "_rgb.npy")
-            #   if data.shape[1] >= 8:
             set_video_names.add(video_name)
-        #  else:
-        #      print(video_path + video_name + "_rgb.npy " + "smaller than 8s")
+
+    rgb_sample = np.load("data/results/" + list(set_video_names)[0] + "_rgb.npy")
+    INPUT_SHAPE = rgb_sample.shape[1]
+    print(INPUT_SHAPE)
+
+    start_time = time.time()
+    # rgb_model = load_model(include_top_value=False)
+    # to get logits
+    rgb_model = load_model(include_top_value=True)
+    print("---load_model:  %s seconds ---" % (time.time() - start_time))
 
     for video_name in tqdm(list(set_video_names)):
-        # channel = "_".join(video_name.split("_")[0:3])
-        # if channel != "1p1_2mini_6":
-        #     continue
         print("----- Processing " + video_name)
-        parser.add_argument('--video_name', type=str, default=video_name)
+        # load RGB sample (just one example)
+        rgb_sample = np.load("data/results/" + video_name + "_rgb.npy")
+        INPUT_SHAPE = rgb_sample.shape[1]
+        if INPUT_SHAPE < 8:
+            print("data/results/" + video_name + "_rgb.npy" + "smaller than 8s")
+            continue
 
-        args = parser.parse_args()
-        main(args)
-
-        remove_options(parser, ['--video_name'])
+        save_data(video_name, rgb_model, rgb_sample)

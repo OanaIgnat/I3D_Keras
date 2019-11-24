@@ -270,7 +270,6 @@ def create_3s_clips(path_input_video, path_output_video):
     # command = "ffmpeg -hide_banner  -err_detect ignore_err -i " + path_input_video + " -r 24 -codec:v libx264  -vsync 1  -codec:a aac  -ac 2  -ar 48k  -f segment   -preset fast  -segment_format mpegts  -segment_time 0.5 -force_key_frames \"expr:gte(t, n_forced * 3)\" " + path_output_video + miniclip + "_%03d.mp4"
 
     # overlapping clips
-    # command_clip_length = "ffprobe -i " + path_input_video + " -show_format | grep duration"
     command_clip_length = "ffprobe -i " + path_input_video + " -show_format -v quiet | sed -n 's/duration=//p'"
     clip_length = system_call(command_clip_length)
     clip_length = int(float(clip_length.strip()))
