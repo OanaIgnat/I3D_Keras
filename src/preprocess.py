@@ -266,10 +266,11 @@ if __name__ == "__main__":
     path_output = ROOT_PATH + "data/frames/"
     miniclips_path = "/local2/oignat/miniclips/"
     # miniclips_path = "/local/oignat/Action_Recog/temporal_annotation/miniclips/"
-    channels = ["1p0", "1p1", "2p0", "2p1", "3p0", "3p1"]
+    # channels = ["1p0", "1p1", "2p0", "2p1", "3p0", "3p1"]
     # channels = ["4p0","4p1", "5p0", "5p1"]
     # channels = ["6p0","6p1", "7p0", "7p1"]
-    # channels = ["1p0"]
+    channels = ["8p0", "8p1"]
+    # channels = ["9p0", "9p1", "10p0", "10p1"]
     for channel in channels:
         # if channel not in ["1p0", "4p0", "6p0"]:
         create_clips(miniclips_path, video_path, channel)
