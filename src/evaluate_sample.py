@@ -58,7 +58,7 @@ if __name__ == '__main__':
 
     for filename in os.listdir(video_path):
         video_name = "_".join(filename.split("_")[:-1])
-        if filename.endswith((".npy")) and not path.exists(path_output_features + video_name + ".npy"):
+        if filename.endswith((".npy")) and "rgb" in filename and not path.exists(path_output_features + video_name + ".npy"):
             set_video_names.add(video_name)
 
     rgb_sample = np.load(video_path + list(set_video_names)[0] + "_rgb.npy")
@@ -80,4 +80,4 @@ if __name__ == '__main__':
             print(video_path + video_name + "_rgb.npy" + "smaller than 8s")
             continue
 
-        save_data(video_name, rgb_model, rgb_sample, video_path)
+        save_data(video_name, rgb_model, rgb_sample, path_output_features)
