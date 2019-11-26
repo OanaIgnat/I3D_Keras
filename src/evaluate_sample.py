@@ -33,14 +33,13 @@ def load_model(include_top_value):
     return rgb_model
 
 
-def save_data(video_name, rgb_model, rgb_sample):
+def save_data(video_name, rgb_model, rgb_sample, path_output_features):
     # make prediction
     start_time = time.time()
     rgb_logits = rgb_model.predict(rgb_sample)
     print("---rgb_model.predict(rgb_sample):  %s seconds ---" % (time.time() - start_time))
 
-    # path_output_features = "data/results_features/"
-    path_output_features = "data/results_logits/"
+    # path_output_features = "data/results_logits/"
     if not os.path.exists(path_output_features):
         os.makedirs(path_output_features)
     start_time = time.time()
@@ -53,32 +52,32 @@ def save_data(video_name, rgb_model, rgb_sample):
 if __name__ == '__main__':
 
     set_video_names = set()
-    video_path = "data/results/"
-    # path_output_features = "data/results_features_3s/"
-    path_output_features = "data/results_logits/"
+    video_path = "data/results_overlapping/"
+    path_output_features = "data/results_features_3s/"
+    # path_output_features = "data/results_logits/"
 
     for filename in os.listdir(video_path):
         video_name = "_".join(filename.split("_")[:-1])
         if filename.endswith((".npy")) and not path.exists(path_output_features + video_name + ".npy"):
             set_video_names.add(video_name)
 
-    rgb_sample = np.load("data/results/" + list(set_video_names)[0] + "_rgb.npy")
+    rgb_sample = np.load(video_path + list(set_video_names)[0] + "_rgb.npy")
     INPUT_SHAPE = rgb_sample.shape[1]
     print(INPUT_SHAPE)
 
     start_time = time.time()
-    # rgb_model = load_model(include_top_value=False)
+    rgb_model = load_model(include_top_value=False)
     # to get logits
-    rgb_model = load_model(include_top_value=True)
+    # rgb_model = load_model(include_top_value=True)
     print("---load_model:  %s seconds ---" % (time.time() - start_time))
 
     for video_name in tqdm(list(set_video_names)):
         print("----- Processing " + video_name)
         # load RGB sample (just one example)
-        rgb_sample = np.load("data/results/" + video_name + "_rgb.npy")
+        rgb_sample = np.load(video_path + video_name + "_rgb.npy")
         INPUT_SHAPE = rgb_sample.shape[1]
         if INPUT_SHAPE < 8:
-            print("data/results/" + video_name + "_rgb.npy" + "smaller than 8s")
+            print(video_path + video_name + "_rgb.npy" + "smaller than 8s")
             continue
 
-        save_data(video_name, rgb_model, rgb_sample)
+        save_data(video_name, rgb_model, rgb_sample, video_path)

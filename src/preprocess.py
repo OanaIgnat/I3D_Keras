@@ -182,7 +182,7 @@ def main(args):
     if not sorted_list_frames:
         print("File " + video_name + " # frames < 10")
         return
-    path_output_results = ROOT_PATH + "data/results_non_overlapping/"
+    path_output_results = ROOT_PATH + "data/results_overlapping/"
     npy_rgb_output = path_output_results + video_name + '_rgb.npy'
 
     if not os.path.exists(path_output_results):
@@ -282,7 +282,7 @@ if __name__ == "__main__":
                     continue
 
                 # path_output_results = ROOT_PATH + "data/results/"
-                path_output_results = ROOT_PATH + "data/results_non_overlapping/"
+                path_output_results = ROOT_PATH + "data/results_overlapping/"
                 npy_rgb_output = path_output_results + filename.split("/")[-1][:-4] + '_rgb.npy'
                 if os.path.exists(npy_rgb_output) and os.stat(npy_rgb_output).st_size != 0:
                     print(npy_rgb_output + " does exist!")
