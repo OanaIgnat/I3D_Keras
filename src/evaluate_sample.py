@@ -53,7 +53,7 @@ if __name__ == '__main__':
 
     set_video_names = set()
     video_path = "data/results_overlapping/"
-    path_output_features = "data/results_features_3s_overlapping/"
+    path_output_features = "data/results_features_overlapping_3s/"
     # path_output_features = "data/results_logits/"
 
     for filename in os.listdir(video_path):
